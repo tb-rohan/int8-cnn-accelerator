@@ -38,23 +38,23 @@ INT8/fpga/
 ### Option A: One-Click Windows Batch Run
 In File Explorer or Command Prompt:
 ```cmd
-cd C:\Users\FLEX\OneDrive\Desktop\PP\INT8\fpga
+cd fpga
 run_synthesis.bat
 ```
 
 ### Option B: PowerShell Execution
 ```powershell
-cd C:\Users\FLEX\OneDrive\Desktop\PP\INT8\fpga
+cd fpga
 .\run_synthesis.ps1
 ```
 
 ### Option C: Generate a GUI Project to Open in Vivado IDE
 To open the project in the visual Vivado IDE:
 ```cmd
-Z:\2026.1\Vivado\bin\vivado.bat -mode batch -source scripts\create_project.tcl
+vivado -mode batch -source scripts\create_project.tcl
 ```
 Then launch Vivado, click **Open Project**, and select:
-`C:\Users\FLEX\OneDrive\Desktop\PP\INT8\fpga\vivado_proj\athena_int8_cnn.xpr`.
+`fpga\vivado_proj\athena_int8_cnn.xpr`.
 
 ---
 

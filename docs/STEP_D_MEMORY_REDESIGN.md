@@ -1,11 +1,11 @@
 # Step D: Feature-Memory Redesign for FPGA Block RAM Inference
 
-**Document Version:** 1.0.0  
-**Date:** October 21, 2026  
-**Target:** Standalone INT8 CNN AI Accelerator (`C:\Users\FLEX\OneDrive\Desktop\PP\INT8`)  
-**Context:** Resolution of 28,160 Distributed RAM LUT Explosion & Synchronous BRAM Pipelining  
-**Target FPGA Device:** Xilinx Artix-7 200T (`xc7a200tfbg676-2`)  
-**Clock Target:** 100.0 MHz (Period: 10.000 ns)  
+**Document Version:** 1.0.0
+**Date:** October 21, 2026
+**Target:** Standalone INT8 CNN AI Accelerator
+**Context:** Resolution of 28,160 Distributed RAM LUT Explosion & Synchronous BRAM Pipelining
+**Target FPGA Device:** Xilinx Artix-7 200T (`xc7a200tfbg676-2`)
+**Clock Target:** 100.0 MHz (Period: 10.000 ns)
 
 ---
 
@@ -29,7 +29,7 @@ During the initial Step D execution, the workspace was recovered from an active 
    - All 12 output classification bytes match golden vectors with bit-exact precision.
 5. **Watchdog & RISC-V Contract Preserved:**
    - Standalone execution consumes 53,816 cycles, comfortably within the 65,535-cycle RISC-V adapter watchdog limit (leaving **11,719 cycles of margin / 17.88% headroom**).
-   - Zero files modified in `C:\Users\FLEX\OneDrive\Desktop\PP\RISC-V`.
+   - Zero files modified in `../RISC-V`.
 
 ---
 

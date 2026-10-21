@@ -208,10 +208,15 @@ powershell -ExecutionPolicy Bypass -File .\scripts\verify.ps1 -PythonExe python
 Expected output: All 10 testbenches report `PASS` and script exits with code 0.
 
 ### 2. Run Single-Image Manual Inference
+Run inference on the included 28x28 sample digit (MNIST test sample 0):
 ```powershell
-python python\run_rtl_manual.py --raw artifacts\manual\20261020_233616_666807_preprocessed_28x28\preprocessed_28x28.npy
+# Using the sample image:
+python python\run_rtl_manual.py examples\sample_digit7.png
+
+# Or using the raw NumPy array:
+python python\run_rtl_manual.py --raw examples\sample_digit7.npy
 ```
-Expected output: Predicted digit 7, 12/12 bytes match Python golden model in 53,836 cycles.
+Expected output: Predicted digit `7` (score: 47), 12/12 bytes match Python golden model in 53,836 cycles. Users may also provide their own 28x28 grayscale image as an argument.
 
 ### 3. Re-run Vivado Out-of-Context Implementation
 ```cmd

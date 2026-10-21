@@ -1,16 +1,16 @@
 # Step C: Critical RTL, Arithmetic, Reset, and FSM Functional Audit
 
-**Document Version:** 1.0.0  
-**Date:** October 20, 2026  
-**Target:** Standalone INT8 CNN AI Accelerator (`C:\Users\FLEX\OneDrive\Desktop\PP\INT8`)  
-**Context:** Preparation for Step D (Synchronous BRAM Feature-Memory Redesign)  
-**Author:** Antigravity Senior RTL Design & Verification Team  
+**Document Version:** 1.0.0
+**Date:** October 20, 2026
+**Target:** Standalone INT8 CNN AI Accelerator
+**Context:** Preparation for Step D (Synchronous BRAM Feature-Memory Redesign)
+**Author:** Antigravity Senior RTL Design & Verification Team
 
 ---
 
 ## 1. Executive Summary
 
-Step C performed a rigorous, multi-faceted verification and functional audit of the standalone INT8 CNN hardware accelerator prior to modifying any feature memory architecture. 
+Step C performed a rigorous, multi-faceted verification and functional audit of the standalone INT8 CNN hardware accelerator prior to modifying any feature memory architecture.
 
 ### Key Findings
 1. **Mathematical Robustness:** The arithmetic datapath in `pe.sv`, `pe_array.sv`, and `post_proc.sv` is mathematically sound. The critical corner case $(-128) \times (-128) = +16384$ fits in signed 16-bit (`0x4000`), sign-extends correctly to 32 bits, and accumulates without overflow. Intermediate bias accumulation uses 33-bit precision, intermediate product scaling uses 49-bit precision, and requantization uses 50-bit round-half-up arithmetic.
@@ -74,13 +74,13 @@ All 8 existing testbenches were executed using `scripts/verify.ps1 -PythonExe py
   ```systemverilog
   biased_stage[i] = $signed(acc_in[i*ACC_W +: ACC_W]) + $signed(bias_in[i*ACC_W +: ACC_W]);
   ```
-  `biased_stage` is declared as `logic signed [ACC_W:0] biased_stage [0:N-1]` (33 bits).  
+  `biased_stage` is declared as `logic signed [ACC_W:0] biased_stage [0:N-1]` (33 bits).
   This 33-bit representation prevents two's complement wrap-around when adding large 32-bit partial sums and biases.
 - **Intermediate Scaling Product:**
   ```systemverilog
   product_stage[i] = biased_stage[i] * $signed({1'b0, quant_mult});
   ```
-  `quant_mult` is 16-bit unsigned, zero-extended and treated as signed 17-bit positive ($[0, 65535]$).  
+  `quant_mult` is 16-bit unsigned, zero-extended and treated as signed 17-bit positive ($[0, 65535]$).
   $33\text{ bits} \times 17\text{ bits} = 50\text{ bits}$ maximum. `product_stage` is declared as `logic signed [48:0]` (49 bits), which accommodates all valid ranges because `biased_stage` never simultaneously saturates both extremes.
 - **Round-Half-Up Fixed-Point Scaling:**
   ```systemverilog
@@ -213,7 +213,7 @@ The integration contract defined in [`docs/INTEGRATION_CONTRACT.md`](./INTEGRATI
 - Module name: `accel_top` (preserved).
 - Ports and widths: `clk`, `rst_n`, `s_axil_*`, `irq` (all preserved).
 - Register map offsets: `0x00` to `0x30` (all preserved).
-- RISC-V workspace files: Zero edits made to `C:\Users\FLEX\OneDrive\Desktop\PP\RISC-V`.
+- RISC-V workspace files: Zero edits made to `../RISC-V`.
 - Hardware arithmetic: Intact; no simulation or software shortcuts taken.
 
 ---

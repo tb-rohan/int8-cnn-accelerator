@@ -1,9 +1,9 @@
 # INT8 Accelerator Baseline Report & Technical Audit (Step A)
 
-**Document:** `docs/INT8_BASELINE.md`  
-**Date:** October 20, 2026  
-**Auditor / Engineer:** Senior RTL Design Engineer / Computer Architecture & AI Accelerator Engineer  
-**Scope:** Standalone INT8 CNN AI Accelerator (`C:\Users\FLEX\OneDrive\Desktop\PP\INT8`) with Future RISC-V Integration Contract (`C:\Users\FLEX\OneDrive\Desktop\PP\RISC-V`)  
+**Document:** `docs/INT8_BASELINE.md`
+**Date:** October 20, 2026
+**Auditor / Engineer:** Senior RTL Design Engineer / Computer Architecture & AI Accelerator Engineer
+**Scope:** Standalone INT8 CNN AI Accelerator with Future RISC-V Integration Contract (`../RISC-V`)
 **Status:** Step A Baseline Established (Read-Only Dynamic & Static Inspection Completed)
 
 ---
@@ -11,8 +11,8 @@
 ## 1. Safety, Toolchain, and Repository Environment
 
 ### 1.1 Git Status & Source Safety
-- **Workspace Path:** `C:\Users\FLEX\OneDrive\Desktop\PP\INT8`
-- **Git Version Control:** No `.git` repository exists in `INT8` or parent workspace `PP`.
+- **Workspace Path:** Standalone INT8 Repository root
+- **Git Version Control:** Historical status at baseline creation.
 - **Source Safety Protocol:** No source files modified. No files deleted. Baseline preserved before any architectural changes.
 
 ### 1.2 Host Toolchain & EDA Versions
@@ -108,7 +108,7 @@ Based on the verified Vivado 2026.1 implementation on **AMD Artix-7 200T (`xc7a2
 
 ## 6. Current Interface & RISC-V Integration Requirements
 
-A read-only inspection of the companion project `C:\Users\FLEX\OneDrive\Desktop\PP\RISC-V` reveals:
+A read-only inspection of the companion project `../RISC-V` reveals:
 
 ### 6.1 Existing Integration Structure in RISC-V SoC
 In `RISC-V/rtl/soc/riscv_cnn_soc_top.sv` (lines 261–282):

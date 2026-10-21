@@ -1,10 +1,10 @@
 # Final Three Targeted Verification Checks: Pre-Publication Audit
 
-**Audit Date:** 2026-10-21  
-**Project:** Standalone INT8 CNN Hardware Accelerator  
-**Workspace:** `C:\Users\FLEX\OneDrive\Desktop\PP\INT8`  
-**Protected SoC Workspace:** `C:\Users\FLEX\OneDrive\Desktop\PP\RISC-V` (Read-Only)  
-**Report Document:** `docs/FINAL_THREE_CHECKS.md`  
+**Audit Date:** 2026-10-21
+**Project:** Standalone INT8 CNN Hardware Accelerator
+**Workspace:** Standalone INT8 Repository
+**Protected SoC Workspace:** `../RISC-V` (Read-Only)
+**Report Document:** `docs/FINAL_THREE_CHECKS.md`
 
 ---
 
@@ -89,13 +89,13 @@
 **`PASS`**
 
 ### Exact Files Inspected
-1. `C:\Users\FLEX\OneDrive\Desktop\PP\RISC-V/rtl/accelerator/accel_adapter.sv` (Lines 38–144)
-2. `C:\Users\FLEX\OneDrive\Desktop\PP\RISC-V/software/asm/soc_cnn_inference.s` (Lines 153–162 and 215–224)
-3. `C:\Users\FLEX\OneDrive\Desktop\PP\INT8/README.md` (Lines 160–180)
-4. `C:\Users\FLEX\OneDrive\Desktop\PP\INT8/docs/SOC_INTEGRATION.md` (Lines 90–115)
-5. `C:\Users\FLEX\OneDrive\Desktop\PP\INT8/docs/FINAL_INTEGRATION_COMPATIBILITY.md` (Lines 100–120)
-6. `C:\Users\FLEX\OneDrive\Desktop\PP\INT8/docs/FINAL_ENGINEERING_SIGNOFF.md` (Lines 28, 49–54)
-7. `C:\Users\FLEX\OneDrive\Desktop\PP\INT8/docs/FINAL_PREPUBLICATION_AUDIT.md` (Lines 21, 394–402, 478)
+1. `../RISC-V/rtl/accelerator/accel_adapter.sv` (Lines 38–144)
+2. `../RISC-V/software/asm/soc_cnn_inference.s` (Lines 153–162 and 215–224)
+3. `README.md` (Lines 160–180)
+4. `docs/SOC_INTEGRATION.md` (Lines 90–115)
+5. `docs/FINAL_INTEGRATION_COMPATIBILITY.md` (Lines 100–120)
+6. `docs/FINAL_ENGINEERING_SIGNOFF.md` (Lines 28, 49–54)
+7. `docs/FINAL_PREPUBLICATION_AUDIT.md` (Lines 21, 394–402, 478)
 
 ### Detailed RTL Logic Inspection (`accel_adapter.sv`)
 In `accel_adapter.sv`:
@@ -209,9 +209,9 @@ Counter transitions within the adapter FSM:
      - The watchdog limit must not be directly compared with full inference latency to claim an inference safety margin.
 
 ### Verification via Co-Simulation
-Executed the compiled co-simulation binary from `C:\Users\FLEX\OneDrive\Desktop\PP\RISC-V`:
+Executed the compiled co-simulation binary from `../RISC-V`:
 ```powershell
-cd C:\Users\FLEX\OneDrive\Desktop\PP\RISC-V
+cd ../RISC-V
 vvp bin_riscv_cnn_soc.vvp +CMD=2
 vvp bin_riscv_cnn_soc.vvp +CMD=1
 ```
@@ -453,7 +453,7 @@ Evaluated at shift $S = 3$ (where $2^{S-1} = 4$ represents fixed-point $+0.5$, d
 | `pe_array.sv` | 3,872 B | `42017565c468522d41260911e97a1ba5aa6a07c09238cf0312c7e352fb41029a` | **FROZEN** |
 | `post_proc.sv` | 4,735 B | `63590797103e135f50dcca93094ec668c8e520076f40735e01e11ee3f3fabcc7` | **FROZEN** |
 
-### RISC-V Repository Status (`C:\Users\FLEX\OneDrive\Desktop\PP\RISC-V`)
+### RISC-V Repository Status (`../RISC-V`)
 ```
 On branch main
 Your branch is up to date with 'origin/main'.
@@ -488,10 +488,10 @@ To maintain strict academic and professional credibility, the following limitati
 
 ## Remaining Manual Steps for Repository Owner
 
-Execute the following commands in PowerShell from `C:\Users\FLEX\OneDrive\Desktop\PP\INT8` when ready to publish:
+Execute the following commands in PowerShell from the repository root when ready to publish:
 
 ```powershell
-cd C:\Users\FLEX\OneDrive\Desktop\PP\INT8
+cd path/to/INT8
 
 # 1. Initialize local Git repository
 git init

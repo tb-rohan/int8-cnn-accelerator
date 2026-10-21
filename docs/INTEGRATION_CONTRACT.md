@@ -1,10 +1,10 @@
 # Integration Contract: Standalone INT8 CNN Accelerator & RISC-V SoC
 
-**Document:** `docs/INTEGRATION_CONTRACT.md`  
-**Date:** October 20, 2026  
-**Auditor / Integration Architect:** Senior RTL Design Engineer & SoC Integration Architect  
-**Hardware Accelerator Target:** `C:\Users\FLEX\OneDrive\Desktop\PP\INT8` (`accel_top`)  
-**Host SoC Target:** `C:\Users\FLEX\OneDrive\Desktop\PP\RISC-V` (`riscv_cnn_soc_top`)  
+**Document:** `docs/INTEGRATION_CONTRACT.md`
+**Date:** October 20, 2026
+**Auditor / Integration Architect:** Senior RTL Design Engineer & SoC Integration Architect
+**Hardware Accelerator Target:** Standalone INT8 Repository (`accel_top`)
+**Host SoC Target:** Companion RISC-V SoC (`../RISC-V`) (`riscv_cnn_soc_top`)
 **Phase:** Step B — Stable Architecture & RISC-V Integration Contract (Documentation & Read-Only Inspection Only)
 
 ---
@@ -31,7 +31,7 @@ The objective is to allow internal architectural refactoring of the INT8 acceler
 1. The top module name `accel_top` must be strictly preserved.
 2. All 23 top-level port names, widths, and polarities of `accel_top` must remain unchanged.
 3. The AXI4-Lite slave MMIO register map (`0x00` through `0x30`) and bit-field assignments must remain strictly unchanged.
-4. No source file, testbench, or script within `C:\Users\FLEX\OneDrive\Desktop\PP\RISC-V` may be modified.
+4. No source file, testbench, or script within `../RISC-V` may be modified.
 
 ---
 

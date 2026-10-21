@@ -137,7 +137,7 @@ The complete RISC-V SoC top (`riscv_cnn_soc_top.sv`), bus interconnect (`bus_int
 
 ## 7. Protected RISC-V Workspace Audit
 
-- **Directory:** `C:\Users\FLEX\OneDrive\Desktop\PP\RISC-V`
+- **Directory:** `../RISC-V` (companion RISC-V SoC repository)
 - **File System Timestamps:** Verified that no file in `PP/RISC-V` was modified.
 - **Git Status:** Clean repository tree with zero modified, staged, untracked, or deleted files (`nothing to commit, working tree clean`).
 - **Verification Integrity:** **100% UNTOUCHED (READ-ONLY COMPLIANCE CERTIFIED)**.

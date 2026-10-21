@@ -1,10 +1,10 @@
 # ATHENA INT8 CNN Hardware Accelerator: Final Pre-Publication Engineering Audit
 
-**Audit Date:** 2026-10-21  
-**Auditor:** Senior RTL Design, Verification & FPGA Implementation Architect  
-**Target Repository:** `C:\Users\FLEX\OneDrive\Desktop\PP\INT8`  
-**Protected Companion Repository:** `C:\Users\FLEX\OneDrive\Desktop\PP\RISC-V` (Read-Only)  
-**Status:** PASS — READY FOR MANUAL PUBLICATION  
+**Audit Date:** 2026-10-21
+**Auditor:** Senior RTL Design, Verification & FPGA Implementation Architect
+**Target Repository:** Standalone INT8 Accelerator Core
+**Protected Companion Repository:** `../RISC-V` (Read-Only)
+**Status:** PASS — READY FOR MANUAL PUBLICATION
 
 ---
 
@@ -25,7 +25,7 @@
 | **Confidence Score** | **10 / 10** | **Ready for public release without further engineering intervention** |
 
 ### Executive Verdict
-**`PASS — READY FOR MANUAL PUBLICATION`**  
+**`PASS — READY FOR MANUAL PUBLICATION`**
 The standalone INT8 CNN hardware accelerator is mathematically sound, timing-closed at 100 MHz, functionally verified against a Python integer golden reference, and proven compatible with the companion RISC-V SoC.
 
 ---
@@ -364,7 +364,7 @@ Evidence extracted from `fpga/reports/a200t/post_route_drc.rpt`:
 ## Section I: RISC-V SoC Integration & Watchdog Headroom Audit
 
 ### Protected Companion Workspace Integrity
-- **Workspace Location:** `C:\Users\FLEX\OneDrive\Desktop\PP\RISC-V`
+- **Workspace Location:** `../RISC-V` (companion RISC-V SoC repository)
 - **Git Branch:** `main`
 - **Working Tree State:** `nothing to commit, working tree clean`
 - **Modifications:** **0 files touched, 0 staged, 0 deleted** (100% read-only integrity preserved).
@@ -481,11 +481,11 @@ vivado -mode batch -source scripts/run_a200t.tcl -log logs/vivado_a200t.log -jou
 - [x] `.github/workflows/simulation.yml`, `LICENSE`, `CITATION.cff`, and `CONTRIBUTING.md` are configured.
 
 ### Manual Git Publishing Commands (For Repository Owner)
-Execute the following commands in PowerShell from the `INT8` workspace root (`C:\Users\FLEX\OneDrive\Desktop\PP\INT8`) when you are ready to create and push your public repository:
+Execute the following commands in PowerShell from the `INT8` workspace root when you are ready to create and push your public repository:
 
 ```powershell
 # Navigate to the INT8 accelerator workspace
-cd C:\Users\FLEX\OneDrive\Desktop\PP\INT8
+cd path/to/INT8
 
 # 1. Initialize local Git repository
 git init
