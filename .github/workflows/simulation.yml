@@ -1,0 +1,89 @@
+name: SystemVerilog Simulation & Verification
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  simulate:
+    name: Regression Suite (Icarus Verilog)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install numpy torch torchvision
+
+      - name: Install Icarus Verilog
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y iverilog
+
+      - name: Verify Icarus Verilog Version
+        run: |
+          iverilog -v
+
+      - name: Run Model Evaluation
+        run: |
+          python python/evaluate_mnist.py --checkpoint artifacts/mnist_cnn.pt --data data --samples 1000
+
+      - name: Run Deterministic RTL Regression Suite
+        run: |
+          python -c "
+          import subprocess, os, sys
+
+          common_rtl = [
+              'rtl/cnn_pkg.sv', 'rtl/pe.sv', 'rtl/pe_array.sv',
+              'rtl/post_proc.sv', 'rtl/mem_ctrl.sv', 'rtl/ctrl_unit.sv', 'rtl/accel_top.sv'
+          ]
+
+          testbenches = [
+              ('tb_pe', ['rtl/pe.sv', 'tb/tb_pe.sv']),
+              ('tb_pe_array', ['rtl/cnn_pkg.sv', 'rtl/pe.sv', 'rtl/pe_array.sv', 'tb/tb_pe_array.sv']),
+              ('tb_post_proc', ['rtl/cnn_pkg.sv', 'rtl/post_proc.sv', 'tb/tb_post_proc.sv']),
+              ('tb_directed_arith', ['rtl/cnn_pkg.sv', 'rtl/pe.sv', 'rtl/post_proc.sv', 'tb/tb_directed_arith.sv']),
+              ('tb_mem_ctrl_random', ['rtl/cnn_pkg.sv', 'rtl/mem_ctrl.sv', 'tb/tb_mem_ctrl_random.sv']),
+              ('tb_mem_ctrl_zero_scan', ['rtl/cnn_pkg.sv', 'rtl/mem_ctrl.sv', 'tb/tb_mem_ctrl_zero_scan.sv']),
+              ('tb_ctrl_unit', ['rtl/cnn_pkg.sv', 'rtl/ctrl_unit.sv', 'tb/tb_ctrl_unit.sv']),
+              ('tb_top', common_rtl + ['tb/tb_top.sv']),
+              ('tb_full_cnn', common_rtl + ['tb/tb_full_cnn.sv']),
+              ('tb_repeated_inference', common_rtl + ['tb/tb_repeated_inference.sv'])
+          ]
+
+          os.makedirs('build', exist_ok=True)
+          failed = []
+
+          for name, sources in testbenches:
+              out_vvp = f'build/{name}.vvp'
+              compile_cmd = ['iverilog', '-g2012', '-s', name, '-o', out_vvp] + sources
+              res_c = subprocess.run(compile_cmd, capture_output=True, text=True)
+              if res_c.returncode != 0:
+                  print(f'FAIL COMPILE: {name}\n{res_c.stderr}')
+                  failed.append(name)
+                  continue
+              res_r = subprocess.run(['vvp', out_vvp], capture_output=True, text=True)
+              if res_r.returncode != 0:
+                  print(f'FAIL RUN: {name}\n{res_r.stdout}\n{res_r.stderr}')
+                  failed.append(name)
+              else:
+                  print(f'PASS: {name}')
+
+          if failed:
+              print(f'Regression FAILED on {len(failed)} tests: {failed}')
+              sys.exit(1)
+          else:
+              print('ALL 10 TESTBENCHES PASSED CLEANLY!')
+          "

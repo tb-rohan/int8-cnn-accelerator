@@ -1,0 +1,1285 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2026 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2026.1 (win64) Build 6511674 Tue Jun 16 11:02:23 MDT 2026
+| Date         : Sat Oct 17 14:42:45 2026
+| Host         : FLEX-5 running 64-bit major release  (build 9200)
+| Command      : report_timing -max_paths 10 -file C:/Users/FLEX/OneDrive/Desktop/PP/INT8/fpga/reports/synth_timing_max_paths.rpt
+| Design       : accel_top
+| Device       : 7a100t-csg324
+| Speed File   : -1  PRODUCTION 1.23 2018-06-13
+| Design State : Synthesized
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack (VIOLATED) :        -16.887ns  (required time - arrival time)
+  Source:                 control/cfg_reg[in_w][1]/C
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            memory/ky_count_reg[0]/CE
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk rise@10.000ns - clk rise@0.000ns)
+  Data Path Delay:        26.505ns  (logic 10.336ns (38.997%)  route 16.169ns (61.003%))
+  Logic Levels:           32  (CARRY4=10 DSP48E1=1 LUT2=4 LUT3=2 LUT4=1 LUT5=2 LUT6=12)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.130ns = ( 12.130 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.454ns
+    Clock Pessimism Removal (CPR):    0.179ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  <hidden>
+                                                      0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.971     0.971 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.803     1.774    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.096     1.870 r  clk_IBUF_BUFG_inst/O
+                         net (fo=39151, unplaced)     0.584     2.454    control/clk_IBUF_BUFG
+                         FDCE                                         r  control/cfg_reg[in_w][1]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.478     2.932 r  control/cfg_reg[in_w][1]/Q
+                         net (fo=22, unplaced)        0.825     3.757    control/cfg[in_w][1]
+                         LUT3 (Prop_lut3_I0_O)        0.295     4.052 r  control/state3_i_142/O
+                         net (fo=1, unplaced)         0.474     4.526    control/state3_i_142_n_0
+                         CARRY4 (Prop_carry4_DI[2]_CO[3])
+                                                      0.404     4.930 r  control/state3_i_59/CO[3]
+                         net (fo=1, unplaced)         0.000     4.930    control/state3_i_59_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.047 r  control/state3_i_106/CO[3]
+                         net (fo=1, unplaced)         0.000     5.047    control/state3_i_106_n_0
+                         CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.179     5.226 f  control/state3_i_45/CO[1]
+                         net (fo=14, unplaced)        0.662     5.888    control/state3_i_45_n_2
+                         LUT6 (Prop_lut6_I0_O)        0.332     6.220 r  control/state3_i_47/O
+                         net (fo=10, unplaced)        0.708     6.928    control/state3_i_47_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124     7.052 r  control/state3_i_46/O
+                         net (fo=8, unplaced)         0.487     7.539    control/state3_i_46_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.124     7.663 r  control/state3_i_111/O
+                         net (fo=1, unplaced)         0.941     8.604    control/state3_i_111_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124     8.728 r  control/state3_i_50/O
+                         net (fo=14, unplaced)        0.500     9.228    control/state3_i_50_n_0
+                         LUT2 (Prop_lut2_I1_O)        0.124     9.352 f  control/state3_i_228/O
+                         net (fo=1, unplaced)         0.732    10.084    control/state3_i_228_n_0
+                         LUT6 (Prop_lut6_I3_O)        0.124    10.208 r  control/state3_i_198/O
+                         net (fo=2, unplaced)         0.460    10.668    control/state3_i_198_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.124    10.792 r  control/state3_i_123/O
+                         net (fo=1, unplaced)         0.941    11.733    control/state3_i_123_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    11.857 r  control/state3_i_54/O
+                         net (fo=9, unplaced)         0.460    12.317    control/state3_i_54_n_0
+                         LUT3 (Prop_lut3_I0_O)        0.124    12.441 f  control/state3_i_131/O
+                         net (fo=1, unplaced)         0.732    13.173    control/state3_i_131_n_0
+                         LUT6 (Prop_lut6_I2_O)        0.124    13.297 r  control/state3_i_55/O
+                         net (fo=11, unplaced)        0.495    13.792    control/state3_i_55_n_0
+                         LUT2 (Prop_lut2_I1_O)        0.124    13.916 f  control/state3_i_135/O
+                         net (fo=1, unplaced)         0.941    14.857    control/state3_i_135_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    14.981 r  control/state3_i_56/O
+                         net (fo=10, unplaced)        0.462    15.443    control/state3_i_56_n_0
+                         LUT2 (Prop_lut2_I0_O)        0.124    15.567 f  control/state3_i_63/O
+                         net (fo=1, unplaced)         0.941    16.508    control/state3_i_63_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    16.632 r  control/state3_i_25/O
+                         net (fo=7, unplaced)         0.484    17.116    control/state3_i_25_n_0
+                         LUT5 (Prop_lut5_I2_O)        0.124    17.240 r  control/state3_i_22/O
+                         net (fo=2, unplaced)         0.743    17.983    control/state3_i_22_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.124    18.107 r  control/state3_i_16/O
+                         net (fo=1, unplaced)         0.333    18.440    control/state3_i_16_n_0
+                         CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.595    19.035 r  control/state3_i_3/CO[3]
+                         net (fo=1, unplaced)         0.000    19.035    control/state3_i_3_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    19.152 r  control/state3_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    19.152    control/state3_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337    19.489 r  control/state3_i_1/O[1]
+                         net (fo=7, unplaced)         0.803    20.292    memory/B[10]
+                         DSP48E1 (Prop_dsp48e1_B[10]_P[5])
+                                                      3.835    24.127 r  memory/state3/P[5]
+                         net (fo=4, unplaced)         0.803    24.930    memory/state3_n_100
+                         LUT2 (Prop_lut2_I0_O)        0.124    25.054 r  memory/group_count[7]_i_70/O
+                         net (fo=1, unplaced)         0.000    25.054    memory/group_count[7]_i_70_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    25.587 r  memory/group_count_reg[7]_i_48/CO[3]
+                         net (fo=1, unplaced)         0.000    25.587    memory/group_count_reg[7]_i_48_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    25.704 r  memory/group_count_reg[7]_i_24/CO[3]
+                         net (fo=1, unplaced)         0.000    25.704    memory/group_count_reg[7]_i_24_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    25.821 r  memory/group_count_reg[7]_i_12/CO[3]
+                         net (fo=1, unplaced)         0.000    25.821    memory/group_count_reg[7]_i_12_n_0
+                         CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.281    26.102 f  memory/group_count_reg[7]_i_6/CO[0]
+                         net (fo=6, unplaced)         0.795    26.897    memory/group_count_reg[7]_i_6_n_3
+                         LUT5 (Prop_lut5_I4_O)        0.367    27.264 r  memory/chunk_count[11]_i_3/O
+                         net (fo=4, unplaced)         0.473    27.737    memory/chunk_count[11]_i_3_n_0
+                         LUT4 (Prop_lut4_I3_O)        0.124    27.861 r  memory/kx_count[3]_i_1/O
+                         net (fo=5, unplaced)         0.477    28.338    memory/kx_count[3]_i_1_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    28.462 r  memory/ky_count[3]_i_1/O
+                         net (fo=4, unplaced)         0.497    28.959    memory/ky_count[3]_i_1_n_0
+                         FDCE                                         r  memory/ky_count_reg[0]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)       10.000    10.000 r  <hidden>
+                                                      0.000    10.000 r  clk
+                         net (fo=0)                   0.000    10.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.838    10.838 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.763    11.600    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.091    11.691 r  clk_IBUF_BUFG_inst/O
+                         net (fo=39151, unplaced)     0.439    12.130    memory/clk_IBUF_BUFG
+                         FDCE                                         r  memory/ky_count_reg[0]/C
+                         clock pessimism              0.179    12.309    <hidden>
+                         clock uncertainty           -0.035    12.274    <hidden>
+                         FDCE (Setup_fdce_C_CE)      -0.202    12.072    memory/ky_count_reg[0]
+  -------------------------------------------------------------------
+                         required time                         12.072    <hidden>
+                         arrival time                         -28.959    <hidden>
+  -------------------------------------------------------------------
+                         slack                                -16.887    <hidden>
+
+Slack (VIOLATED) :        -16.887ns  (required time - arrival time)
+  Source:                 control/cfg_reg[in_w][1]/C
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            memory/ky_count_reg[1]/CE
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk rise@10.000ns - clk rise@0.000ns)
+  Data Path Delay:        26.505ns  (logic 10.336ns (38.997%)  route 16.169ns (61.003%))
+  Logic Levels:           32  (CARRY4=10 DSP48E1=1 LUT2=4 LUT3=2 LUT4=1 LUT5=2 LUT6=12)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.130ns = ( 12.130 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.454ns
+    Clock Pessimism Removal (CPR):    0.179ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  <hidden>
+                                                      0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.971     0.971 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.803     1.774    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.096     1.870 r  clk_IBUF_BUFG_inst/O
+                         net (fo=39151, unplaced)     0.584     2.454    control/clk_IBUF_BUFG
+                         FDCE                                         r  control/cfg_reg[in_w][1]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.478     2.932 r  control/cfg_reg[in_w][1]/Q
+                         net (fo=22, unplaced)        0.825     3.757    control/cfg[in_w][1]
+                         LUT3 (Prop_lut3_I0_O)        0.295     4.052 r  control/state3_i_142/O
+                         net (fo=1, unplaced)         0.474     4.526    control/state3_i_142_n_0
+                         CARRY4 (Prop_carry4_DI[2]_CO[3])
+                                                      0.404     4.930 r  control/state3_i_59/CO[3]
+                         net (fo=1, unplaced)         0.000     4.930    control/state3_i_59_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.047 r  control/state3_i_106/CO[3]
+                         net (fo=1, unplaced)         0.000     5.047    control/state3_i_106_n_0
+                         CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.179     5.226 f  control/state3_i_45/CO[1]
+                         net (fo=14, unplaced)        0.662     5.888    control/state3_i_45_n_2
+                         LUT6 (Prop_lut6_I0_O)        0.332     6.220 r  control/state3_i_47/O
+                         net (fo=10, unplaced)        0.708     6.928    control/state3_i_47_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124     7.052 r  control/state3_i_46/O
+                         net (fo=8, unplaced)         0.487     7.539    control/state3_i_46_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.124     7.663 r  control/state3_i_111/O
+                         net (fo=1, unplaced)         0.941     8.604    control/state3_i_111_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124     8.728 r  control/state3_i_50/O
+                         net (fo=14, unplaced)        0.500     9.228    control/state3_i_50_n_0
+                         LUT2 (Prop_lut2_I1_O)        0.124     9.352 f  control/state3_i_228/O
+                         net (fo=1, unplaced)         0.732    10.084    control/state3_i_228_n_0
+                         LUT6 (Prop_lut6_I3_O)        0.124    10.208 r  control/state3_i_198/O
+                         net (fo=2, unplaced)         0.460    10.668    control/state3_i_198_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.124    10.792 r  control/state3_i_123/O
+                         net (fo=1, unplaced)         0.941    11.733    control/state3_i_123_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    11.857 r  control/state3_i_54/O
+                         net (fo=9, unplaced)         0.460    12.317    control/state3_i_54_n_0
+                         LUT3 (Prop_lut3_I0_O)        0.124    12.441 f  control/state3_i_131/O
+                         net (fo=1, unplaced)         0.732    13.173    control/state3_i_131_n_0
+                         LUT6 (Prop_lut6_I2_O)        0.124    13.297 r  control/state3_i_55/O
+                         net (fo=11, unplaced)        0.495    13.792    control/state3_i_55_n_0
+                         LUT2 (Prop_lut2_I1_O)        0.124    13.916 f  control/state3_i_135/O
+                         net (fo=1, unplaced)         0.941    14.857    control/state3_i_135_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    14.981 r  control/state3_i_56/O
+                         net (fo=10, unplaced)        0.462    15.443    control/state3_i_56_n_0
+                         LUT2 (Prop_lut2_I0_O)        0.124    15.567 f  control/state3_i_63/O
+                         net (fo=1, unplaced)         0.941    16.508    control/state3_i_63_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    16.632 r  control/state3_i_25/O
+                         net (fo=7, unplaced)         0.484    17.116    control/state3_i_25_n_0
+                         LUT5 (Prop_lut5_I2_O)        0.124    17.240 r  control/state3_i_22/O
+                         net (fo=2, unplaced)         0.743    17.983    control/state3_i_22_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.124    18.107 r  control/state3_i_16/O
+                         net (fo=1, unplaced)         0.333    18.440    control/state3_i_16_n_0
+                         CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.595    19.035 r  control/state3_i_3/CO[3]
+                         net (fo=1, unplaced)         0.000    19.035    control/state3_i_3_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    19.152 r  control/state3_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    19.152    control/state3_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337    19.489 r  control/state3_i_1/O[1]
+                         net (fo=7, unplaced)         0.803    20.292    memory/B[10]
+                         DSP48E1 (Prop_dsp48e1_B[10]_P[5])
+                                                      3.835    24.127 r  memory/state3/P[5]
+                         net (fo=4, unplaced)         0.803    24.930    memory/state3_n_100
+                         LUT2 (Prop_lut2_I0_O)        0.124    25.054 r  memory/group_count[7]_i_70/O
+                         net (fo=1, unplaced)         0.000    25.054    memory/group_count[7]_i_70_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    25.587 r  memory/group_count_reg[7]_i_48/CO[3]
+                         net (fo=1, unplaced)         0.000    25.587    memory/group_count_reg[7]_i_48_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    25.704 r  memory/group_count_reg[7]_i_24/CO[3]
+                         net (fo=1, unplaced)         0.000    25.704    memory/group_count_reg[7]_i_24_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    25.821 r  memory/group_count_reg[7]_i_12/CO[3]
+                         net (fo=1, unplaced)         0.000    25.821    memory/group_count_reg[7]_i_12_n_0
+                         CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.281    26.102 f  memory/group_count_reg[7]_i_6/CO[0]
+                         net (fo=6, unplaced)         0.795    26.897    memory/group_count_reg[7]_i_6_n_3
+                         LUT5 (Prop_lut5_I4_O)        0.367    27.264 r  memory/chunk_count[11]_i_3/O
+                         net (fo=4, unplaced)         0.473    27.737    memory/chunk_count[11]_i_3_n_0
+                         LUT4 (Prop_lut4_I3_O)        0.124    27.861 r  memory/kx_count[3]_i_1/O
+                         net (fo=5, unplaced)         0.477    28.338    memory/kx_count[3]_i_1_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    28.462 r  memory/ky_count[3]_i_1/O
+                         net (fo=4, unplaced)         0.497    28.959    memory/ky_count[3]_i_1_n_0
+                         FDCE                                         r  memory/ky_count_reg[1]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)       10.000    10.000 r  <hidden>
+                                                      0.000    10.000 r  clk
+                         net (fo=0)                   0.000    10.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.838    10.838 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.763    11.600    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.091    11.691 r  clk_IBUF_BUFG_inst/O
+                         net (fo=39151, unplaced)     0.439    12.130    memory/clk_IBUF_BUFG
+                         FDCE                                         r  memory/ky_count_reg[1]/C
+                         clock pessimism              0.179    12.309    <hidden>
+                         clock uncertainty           -0.035    12.274    <hidden>
+                         FDCE (Setup_fdce_C_CE)      -0.202    12.072    memory/ky_count_reg[1]
+  -------------------------------------------------------------------
+                         required time                         12.072    <hidden>
+                         arrival time                         -28.959    <hidden>
+  -------------------------------------------------------------------
+                         slack                                -16.887    <hidden>
+
+Slack (VIOLATED) :        -16.887ns  (required time - arrival time)
+  Source:                 control/cfg_reg[in_w][1]/C
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            memory/ky_count_reg[2]/CE
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk rise@10.000ns - clk rise@0.000ns)
+  Data Path Delay:        26.505ns  (logic 10.336ns (38.997%)  route 16.169ns (61.003%))
+  Logic Levels:           32  (CARRY4=10 DSP48E1=1 LUT2=4 LUT3=2 LUT4=1 LUT5=2 LUT6=12)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.130ns = ( 12.130 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.454ns
+    Clock Pessimism Removal (CPR):    0.179ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  <hidden>
+                                                      0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.971     0.971 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.803     1.774    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.096     1.870 r  clk_IBUF_BUFG_inst/O
+                         net (fo=39151, unplaced)     0.584     2.454    control/clk_IBUF_BUFG
+                         FDCE                                         r  control/cfg_reg[in_w][1]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.478     2.932 r  control/cfg_reg[in_w][1]/Q
+                         net (fo=22, unplaced)        0.825     3.757    control/cfg[in_w][1]
+                         LUT3 (Prop_lut3_I0_O)        0.295     4.052 r  control/state3_i_142/O
+                         net (fo=1, unplaced)         0.474     4.526    control/state3_i_142_n_0
+                         CARRY4 (Prop_carry4_DI[2]_CO[3])
+                                                      0.404     4.930 r  control/state3_i_59/CO[3]
+                         net (fo=1, unplaced)         0.000     4.930    control/state3_i_59_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.047 r  control/state3_i_106/CO[3]
+                         net (fo=1, unplaced)         0.000     5.047    control/state3_i_106_n_0
+                         CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.179     5.226 f  control/state3_i_45/CO[1]
+                         net (fo=14, unplaced)        0.662     5.888    control/state3_i_45_n_2
+                         LUT6 (Prop_lut6_I0_O)        0.332     6.220 r  control/state3_i_47/O
+                         net (fo=10, unplaced)        0.708     6.928    control/state3_i_47_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124     7.052 r  control/state3_i_46/O
+                         net (fo=8, unplaced)         0.487     7.539    control/state3_i_46_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.124     7.663 r  control/state3_i_111/O
+                         net (fo=1, unplaced)         0.941     8.604    control/state3_i_111_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124     8.728 r  control/state3_i_50/O
+                         net (fo=14, unplaced)        0.500     9.228    control/state3_i_50_n_0
+                         LUT2 (Prop_lut2_I1_O)        0.124     9.352 f  control/state3_i_228/O
+                         net (fo=1, unplaced)         0.732    10.084    control/state3_i_228_n_0
+                         LUT6 (Prop_lut6_I3_O)        0.124    10.208 r  control/state3_i_198/O
+                         net (fo=2, unplaced)         0.460    10.668    control/state3_i_198_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.124    10.792 r  control/state3_i_123/O
+                         net (fo=1, unplaced)         0.941    11.733    control/state3_i_123_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    11.857 r  control/state3_i_54/O
+                         net (fo=9, unplaced)         0.460    12.317    control/state3_i_54_n_0
+                         LUT3 (Prop_lut3_I0_O)        0.124    12.441 f  control/state3_i_131/O
+                         net (fo=1, unplaced)         0.732    13.173    control/state3_i_131_n_0
+                         LUT6 (Prop_lut6_I2_O)        0.124    13.297 r  control/state3_i_55/O
+                         net (fo=11, unplaced)        0.495    13.792    control/state3_i_55_n_0
+                         LUT2 (Prop_lut2_I1_O)        0.124    13.916 f  control/state3_i_135/O
+                         net (fo=1, unplaced)         0.941    14.857    control/state3_i_135_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    14.981 r  control/state3_i_56/O
+                         net (fo=10, unplaced)        0.462    15.443    control/state3_i_56_n_0
+                         LUT2 (Prop_lut2_I0_O)        0.124    15.567 f  control/state3_i_63/O
+                         net (fo=1, unplaced)         0.941    16.508    control/state3_i_63_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    16.632 r  control/state3_i_25/O
+                         net (fo=7, unplaced)         0.484    17.116    control/state3_i_25_n_0
+                         LUT5 (Prop_lut5_I2_O)        0.124    17.240 r  control/state3_i_22/O
+                         net (fo=2, unplaced)         0.743    17.983    control/state3_i_22_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.124    18.107 r  control/state3_i_16/O
+                         net (fo=1, unplaced)         0.333    18.440    control/state3_i_16_n_0
+                         CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.595    19.035 r  control/state3_i_3/CO[3]
+                         net (fo=1, unplaced)         0.000    19.035    control/state3_i_3_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    19.152 r  control/state3_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    19.152    control/state3_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337    19.489 r  control/state3_i_1/O[1]
+                         net (fo=7, unplaced)         0.803    20.292    memory/B[10]
+                         DSP48E1 (Prop_dsp48e1_B[10]_P[5])
+                                                      3.835    24.127 r  memory/state3/P[5]
+                         net (fo=4, unplaced)         0.803    24.930    memory/state3_n_100
+                         LUT2 (Prop_lut2_I0_O)        0.124    25.054 r  memory/group_count[7]_i_70/O
+                         net (fo=1, unplaced)         0.000    25.054    memory/group_count[7]_i_70_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    25.587 r  memory/group_count_reg[7]_i_48/CO[3]
+                         net (fo=1, unplaced)         0.000    25.587    memory/group_count_reg[7]_i_48_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    25.704 r  memory/group_count_reg[7]_i_24/CO[3]
+                         net (fo=1, unplaced)         0.000    25.704    memory/group_count_reg[7]_i_24_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    25.821 r  memory/group_count_reg[7]_i_12/CO[3]
+                         net (fo=1, unplaced)         0.000    25.821    memory/group_count_reg[7]_i_12_n_0
+                         CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.281    26.102 f  memory/group_count_reg[7]_i_6/CO[0]
+                         net (fo=6, unplaced)         0.795    26.897    memory/group_count_reg[7]_i_6_n_3
+                         LUT5 (Prop_lut5_I4_O)        0.367    27.264 r  memory/chunk_count[11]_i_3/O
+                         net (fo=4, unplaced)         0.473    27.737    memory/chunk_count[11]_i_3_n_0
+                         LUT4 (Prop_lut4_I3_O)        0.124    27.861 r  memory/kx_count[3]_i_1/O
+                         net (fo=5, unplaced)         0.477    28.338    memory/kx_count[3]_i_1_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    28.462 r  memory/ky_count[3]_i_1/O
+                         net (fo=4, unplaced)         0.497    28.959    memory/ky_count[3]_i_1_n_0
+                         FDCE                                         r  memory/ky_count_reg[2]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)       10.000    10.000 r  <hidden>
+                                                      0.000    10.000 r  clk
+                         net (fo=0)                   0.000    10.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.838    10.838 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.763    11.600    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.091    11.691 r  clk_IBUF_BUFG_inst/O
+                         net (fo=39151, unplaced)     0.439    12.130    memory/clk_IBUF_BUFG
+                         FDCE                                         r  memory/ky_count_reg[2]/C
+                         clock pessimism              0.179    12.309    <hidden>
+                         clock uncertainty           -0.035    12.274    <hidden>
+                         FDCE (Setup_fdce_C_CE)      -0.202    12.072    memory/ky_count_reg[2]
+  -------------------------------------------------------------------
+                         required time                         12.072    <hidden>
+                         arrival time                         -28.959    <hidden>
+  -------------------------------------------------------------------
+                         slack                                -16.887    <hidden>
+
+Slack (VIOLATED) :        -16.887ns  (required time - arrival time)
+  Source:                 control/cfg_reg[in_w][1]/C
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            memory/ky_count_reg[3]/CE
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk rise@10.000ns - clk rise@0.000ns)
+  Data Path Delay:        26.505ns  (logic 10.336ns (38.997%)  route 16.169ns (61.003%))
+  Logic Levels:           32  (CARRY4=10 DSP48E1=1 LUT2=4 LUT3=2 LUT4=1 LUT5=2 LUT6=12)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.130ns = ( 12.130 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.454ns
+    Clock Pessimism Removal (CPR):    0.179ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  <hidden>
+                                                      0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.971     0.971 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.803     1.774    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.096     1.870 r  clk_IBUF_BUFG_inst/O
+                         net (fo=39151, unplaced)     0.584     2.454    control/clk_IBUF_BUFG
+                         FDCE                                         r  control/cfg_reg[in_w][1]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.478     2.932 r  control/cfg_reg[in_w][1]/Q
+                         net (fo=22, unplaced)        0.825     3.757    control/cfg[in_w][1]
+                         LUT3 (Prop_lut3_I0_O)        0.295     4.052 r  control/state3_i_142/O
+                         net (fo=1, unplaced)         0.474     4.526    control/state3_i_142_n_0
+                         CARRY4 (Prop_carry4_DI[2]_CO[3])
+                                                      0.404     4.930 r  control/state3_i_59/CO[3]
+                         net (fo=1, unplaced)         0.000     4.930    control/state3_i_59_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.047 r  control/state3_i_106/CO[3]
+                         net (fo=1, unplaced)         0.000     5.047    control/state3_i_106_n_0
+                         CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.179     5.226 f  control/state3_i_45/CO[1]
+                         net (fo=14, unplaced)        0.662     5.888    control/state3_i_45_n_2
+                         LUT6 (Prop_lut6_I0_O)        0.332     6.220 r  control/state3_i_47/O
+                         net (fo=10, unplaced)        0.708     6.928    control/state3_i_47_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124     7.052 r  control/state3_i_46/O
+                         net (fo=8, unplaced)         0.487     7.539    control/state3_i_46_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.124     7.663 r  control/state3_i_111/O
+                         net (fo=1, unplaced)         0.941     8.604    control/state3_i_111_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124     8.728 r  control/state3_i_50/O
+                         net (fo=14, unplaced)        0.500     9.228    control/state3_i_50_n_0
+                         LUT2 (Prop_lut2_I1_O)        0.124     9.352 f  control/state3_i_228/O
+                         net (fo=1, unplaced)         0.732    10.084    control/state3_i_228_n_0
+                         LUT6 (Prop_lut6_I3_O)        0.124    10.208 r  control/state3_i_198/O
+                         net (fo=2, unplaced)         0.460    10.668    control/state3_i_198_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.124    10.792 r  control/state3_i_123/O
+                         net (fo=1, unplaced)         0.941    11.733    control/state3_i_123_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    11.857 r  control/state3_i_54/O
+                         net (fo=9, unplaced)         0.460    12.317    control/state3_i_54_n_0
+                         LUT3 (Prop_lut3_I0_O)        0.124    12.441 f  control/state3_i_131/O
+                         net (fo=1, unplaced)         0.732    13.173    control/state3_i_131_n_0
+                         LUT6 (Prop_lut6_I2_O)        0.124    13.297 r  control/state3_i_55/O
+                         net (fo=11, unplaced)        0.495    13.792    control/state3_i_55_n_0
+                         LUT2 (Prop_lut2_I1_O)        0.124    13.916 f  control/state3_i_135/O
+                         net (fo=1, unplaced)         0.941    14.857    control/state3_i_135_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    14.981 r  control/state3_i_56/O
+                         net (fo=10, unplaced)        0.462    15.443    control/state3_i_56_n_0
+                         LUT2 (Prop_lut2_I0_O)        0.124    15.567 f  control/state3_i_63/O
+                         net (fo=1, unplaced)         0.941    16.508    control/state3_i_63_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    16.632 r  control/state3_i_25/O
+                         net (fo=7, unplaced)         0.484    17.116    control/state3_i_25_n_0
+                         LUT5 (Prop_lut5_I2_O)        0.124    17.240 r  control/state3_i_22/O
+                         net (fo=2, unplaced)         0.743    17.983    control/state3_i_22_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.124    18.107 r  control/state3_i_16/O
+                         net (fo=1, unplaced)         0.333    18.440    control/state3_i_16_n_0
+                         CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.595    19.035 r  control/state3_i_3/CO[3]
+                         net (fo=1, unplaced)         0.000    19.035    control/state3_i_3_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    19.152 r  control/state3_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    19.152    control/state3_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337    19.489 r  control/state3_i_1/O[1]
+                         net (fo=7, unplaced)         0.803    20.292    memory/B[10]
+                         DSP48E1 (Prop_dsp48e1_B[10]_P[5])
+                                                      3.835    24.127 r  memory/state3/P[5]
+                         net (fo=4, unplaced)         0.803    24.930    memory/state3_n_100
+                         LUT2 (Prop_lut2_I0_O)        0.124    25.054 r  memory/group_count[7]_i_70/O
+                         net (fo=1, unplaced)         0.000    25.054    memory/group_count[7]_i_70_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    25.587 r  memory/group_count_reg[7]_i_48/CO[3]
+                         net (fo=1, unplaced)         0.000    25.587    memory/group_count_reg[7]_i_48_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    25.704 r  memory/group_count_reg[7]_i_24/CO[3]
+                         net (fo=1, unplaced)         0.000    25.704    memory/group_count_reg[7]_i_24_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    25.821 r  memory/group_count_reg[7]_i_12/CO[3]
+                         net (fo=1, unplaced)         0.000    25.821    memory/group_count_reg[7]_i_12_n_0
+                         CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.281    26.102 f  memory/group_count_reg[7]_i_6/CO[0]
+                         net (fo=6, unplaced)         0.795    26.897    memory/group_count_reg[7]_i_6_n_3
+                         LUT5 (Prop_lut5_I4_O)        0.367    27.264 r  memory/chunk_count[11]_i_3/O
+                         net (fo=4, unplaced)         0.473    27.737    memory/chunk_count[11]_i_3_n_0
+                         LUT4 (Prop_lut4_I3_O)        0.124    27.861 r  memory/kx_count[3]_i_1/O
+                         net (fo=5, unplaced)         0.477    28.338    memory/kx_count[3]_i_1_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    28.462 r  memory/ky_count[3]_i_1/O
+                         net (fo=4, unplaced)         0.497    28.959    memory/ky_count[3]_i_1_n_0
+                         FDCE                                         r  memory/ky_count_reg[3]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)       10.000    10.000 r  <hidden>
+                                                      0.000    10.000 r  clk
+                         net (fo=0)                   0.000    10.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.838    10.838 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.763    11.600    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.091    11.691 r  clk_IBUF_BUFG_inst/O
+                         net (fo=39151, unplaced)     0.439    12.130    memory/clk_IBUF_BUFG
+                         FDCE                                         r  memory/ky_count_reg[3]/C
+                         clock pessimism              0.179    12.309    <hidden>
+                         clock uncertainty           -0.035    12.274    <hidden>
+                         FDCE (Setup_fdce_C_CE)      -0.202    12.072    memory/ky_count_reg[3]
+  -------------------------------------------------------------------
+                         required time                         12.072    <hidden>
+                         arrival time                         -28.959    <hidden>
+  -------------------------------------------------------------------
+                         slack                                -16.887    <hidden>
+
+Slack (VIOLATED) :        -16.324ns  (required time - arrival time)
+  Source:                 control/cfg_reg[in_w][1]/C
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            memory/chunk_count_reg[0]/CE
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk rise@10.000ns - clk rise@0.000ns)
+  Data Path Delay:        25.942ns  (logic 10.212ns (39.365%)  route 15.730ns (60.635%))
+  Logic Levels:           31  (CARRY4=10 DSP48E1=1 LUT2=4 LUT3=2 LUT5=2 LUT6=12)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.130ns = ( 12.130 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.454ns
+    Clock Pessimism Removal (CPR):    0.179ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  <hidden>
+                                                      0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.971     0.971 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.803     1.774    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.096     1.870 r  clk_IBUF_BUFG_inst/O
+                         net (fo=39151, unplaced)     0.584     2.454    control/clk_IBUF_BUFG
+                         FDCE                                         r  control/cfg_reg[in_w][1]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.478     2.932 r  control/cfg_reg[in_w][1]/Q
+                         net (fo=22, unplaced)        0.825     3.757    control/cfg[in_w][1]
+                         LUT3 (Prop_lut3_I0_O)        0.295     4.052 r  control/state3_i_142/O
+                         net (fo=1, unplaced)         0.474     4.526    control/state3_i_142_n_0
+                         CARRY4 (Prop_carry4_DI[2]_CO[3])
+                                                      0.404     4.930 r  control/state3_i_59/CO[3]
+                         net (fo=1, unplaced)         0.000     4.930    control/state3_i_59_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.047 r  control/state3_i_106/CO[3]
+                         net (fo=1, unplaced)         0.000     5.047    control/state3_i_106_n_0
+                         CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.179     5.226 f  control/state3_i_45/CO[1]
+                         net (fo=14, unplaced)        0.662     5.888    control/state3_i_45_n_2
+                         LUT6 (Prop_lut6_I0_O)        0.332     6.220 r  control/state3_i_47/O
+                         net (fo=10, unplaced)        0.708     6.928    control/state3_i_47_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124     7.052 r  control/state3_i_46/O
+                         net (fo=8, unplaced)         0.487     7.539    control/state3_i_46_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.124     7.663 r  control/state3_i_111/O
+                         net (fo=1, unplaced)         0.941     8.604    control/state3_i_111_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124     8.728 r  control/state3_i_50/O
+                         net (fo=14, unplaced)        0.500     9.228    control/state3_i_50_n_0
+                         LUT2 (Prop_lut2_I1_O)        0.124     9.352 f  control/state3_i_228/O
+                         net (fo=1, unplaced)         0.732    10.084    control/state3_i_228_n_0
+                         LUT6 (Prop_lut6_I3_O)        0.124    10.208 r  control/state3_i_198/O
+                         net (fo=2, unplaced)         0.460    10.668    control/state3_i_198_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.124    10.792 r  control/state3_i_123/O
+                         net (fo=1, unplaced)         0.941    11.733    control/state3_i_123_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    11.857 r  control/state3_i_54/O
+                         net (fo=9, unplaced)         0.460    12.317    control/state3_i_54_n_0
+                         LUT3 (Prop_lut3_I0_O)        0.124    12.441 f  control/state3_i_131/O
+                         net (fo=1, unplaced)         0.732    13.173    control/state3_i_131_n_0
+                         LUT6 (Prop_lut6_I2_O)        0.124    13.297 r  control/state3_i_55/O
+                         net (fo=11, unplaced)        0.495    13.792    control/state3_i_55_n_0
+                         LUT2 (Prop_lut2_I1_O)        0.124    13.916 f  control/state3_i_135/O
+                         net (fo=1, unplaced)         0.941    14.857    control/state3_i_135_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    14.981 r  control/state3_i_56/O
+                         net (fo=10, unplaced)        0.462    15.443    control/state3_i_56_n_0
+                         LUT2 (Prop_lut2_I0_O)        0.124    15.567 f  control/state3_i_63/O
+                         net (fo=1, unplaced)         0.941    16.508    control/state3_i_63_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    16.632 r  control/state3_i_25/O
+                         net (fo=7, unplaced)         0.484    17.116    control/state3_i_25_n_0
+                         LUT5 (Prop_lut5_I2_O)        0.124    17.240 r  control/state3_i_22/O
+                         net (fo=2, unplaced)         0.743    17.983    control/state3_i_22_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.124    18.107 r  control/state3_i_16/O
+                         net (fo=1, unplaced)         0.333    18.440    control/state3_i_16_n_0
+                         CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.595    19.035 r  control/state3_i_3/CO[3]
+                         net (fo=1, unplaced)         0.000    19.035    control/state3_i_3_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    19.152 r  control/state3_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    19.152    control/state3_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337    19.489 r  control/state3_i_1/O[1]
+                         net (fo=7, unplaced)         0.803    20.292    memory/B[10]
+                         DSP48E1 (Prop_dsp48e1_B[10]_P[5])
+                                                      3.835    24.127 r  memory/state3/P[5]
+                         net (fo=4, unplaced)         0.803    24.930    memory/state3_n_100
+                         LUT2 (Prop_lut2_I0_O)        0.124    25.054 r  memory/group_count[7]_i_70/O
+                         net (fo=1, unplaced)         0.000    25.054    memory/group_count[7]_i_70_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    25.587 r  memory/group_count_reg[7]_i_48/CO[3]
+                         net (fo=1, unplaced)         0.000    25.587    memory/group_count_reg[7]_i_48_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    25.704 r  memory/group_count_reg[7]_i_24/CO[3]
+                         net (fo=1, unplaced)         0.000    25.704    memory/group_count_reg[7]_i_24_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    25.821 r  memory/group_count_reg[7]_i_12/CO[3]
+                         net (fo=1, unplaced)         0.000    25.821    memory/group_count_reg[7]_i_12_n_0
+                         CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.281    26.102 f  memory/group_count_reg[7]_i_6/CO[0]
+                         net (fo=6, unplaced)         0.795    26.897    memory/group_count_reg[7]_i_6_n_3
+                         LUT5 (Prop_lut5_I4_O)        0.367    27.264 r  memory/chunk_count[11]_i_3/O
+                         net (fo=4, unplaced)         0.473    27.737    memory/chunk_count[11]_i_3_n_0
+                         LUT6 (Prop_lut6_I5_O)        0.124    27.861 r  memory/chunk_count[11]_i_1/O
+                         net (fo=22, unplaced)        0.535    28.396    memory/chunk_count[11]_i_1_n_0
+                         FDCE                                         r  memory/chunk_count_reg[0]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)       10.000    10.000 r  <hidden>
+                                                      0.000    10.000 r  clk
+                         net (fo=0)                   0.000    10.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.838    10.838 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.763    11.600    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.091    11.691 r  clk_IBUF_BUFG_inst/O
+                         net (fo=39151, unplaced)     0.439    12.130    memory/clk_IBUF_BUFG
+                         FDCE                                         r  memory/chunk_count_reg[0]/C
+                         clock pessimism              0.179    12.309    <hidden>
+                         clock uncertainty           -0.035    12.274    <hidden>
+                         FDCE (Setup_fdce_C_CE)      -0.202    12.072    memory/chunk_count_reg[0]
+  -------------------------------------------------------------------
+                         required time                         12.072    <hidden>
+                         arrival time                         -28.396    <hidden>
+  -------------------------------------------------------------------
+                         slack                                -16.324    <hidden>
+
+Slack (VIOLATED) :        -16.324ns  (required time - arrival time)
+  Source:                 control/cfg_reg[in_w][1]/C
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            memory/chunk_count_reg[10]/CE
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk rise@10.000ns - clk rise@0.000ns)
+  Data Path Delay:        25.942ns  (logic 10.212ns (39.365%)  route 15.730ns (60.635%))
+  Logic Levels:           31  (CARRY4=10 DSP48E1=1 LUT2=4 LUT3=2 LUT5=2 LUT6=12)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.130ns = ( 12.130 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.454ns
+    Clock Pessimism Removal (CPR):    0.179ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  <hidden>
+                                                      0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.971     0.971 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.803     1.774    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.096     1.870 r  clk_IBUF_BUFG_inst/O
+                         net (fo=39151, unplaced)     0.584     2.454    control/clk_IBUF_BUFG
+                         FDCE                                         r  control/cfg_reg[in_w][1]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.478     2.932 r  control/cfg_reg[in_w][1]/Q
+                         net (fo=22, unplaced)        0.825     3.757    control/cfg[in_w][1]
+                         LUT3 (Prop_lut3_I0_O)        0.295     4.052 r  control/state3_i_142/O
+                         net (fo=1, unplaced)         0.474     4.526    control/state3_i_142_n_0
+                         CARRY4 (Prop_carry4_DI[2]_CO[3])
+                                                      0.404     4.930 r  control/state3_i_59/CO[3]
+                         net (fo=1, unplaced)         0.000     4.930    control/state3_i_59_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.047 r  control/state3_i_106/CO[3]
+                         net (fo=1, unplaced)         0.000     5.047    control/state3_i_106_n_0
+                         CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.179     5.226 f  control/state3_i_45/CO[1]
+                         net (fo=14, unplaced)        0.662     5.888    control/state3_i_45_n_2
+                         LUT6 (Prop_lut6_I0_O)        0.332     6.220 r  control/state3_i_47/O
+                         net (fo=10, unplaced)        0.708     6.928    control/state3_i_47_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124     7.052 r  control/state3_i_46/O
+                         net (fo=8, unplaced)         0.487     7.539    control/state3_i_46_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.124     7.663 r  control/state3_i_111/O
+                         net (fo=1, unplaced)         0.941     8.604    control/state3_i_111_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124     8.728 r  control/state3_i_50/O
+                         net (fo=14, unplaced)        0.500     9.228    control/state3_i_50_n_0
+                         LUT2 (Prop_lut2_I1_O)        0.124     9.352 f  control/state3_i_228/O
+                         net (fo=1, unplaced)         0.732    10.084    control/state3_i_228_n_0
+                         LUT6 (Prop_lut6_I3_O)        0.124    10.208 r  control/state3_i_198/O
+                         net (fo=2, unplaced)         0.460    10.668    control/state3_i_198_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.124    10.792 r  control/state3_i_123/O
+                         net (fo=1, unplaced)         0.941    11.733    control/state3_i_123_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    11.857 r  control/state3_i_54/O
+                         net (fo=9, unplaced)         0.460    12.317    control/state3_i_54_n_0
+                         LUT3 (Prop_lut3_I0_O)        0.124    12.441 f  control/state3_i_131/O
+                         net (fo=1, unplaced)         0.732    13.173    control/state3_i_131_n_0
+                         LUT6 (Prop_lut6_I2_O)        0.124    13.297 r  control/state3_i_55/O
+                         net (fo=11, unplaced)        0.495    13.792    control/state3_i_55_n_0
+                         LUT2 (Prop_lut2_I1_O)        0.124    13.916 f  control/state3_i_135/O
+                         net (fo=1, unplaced)         0.941    14.857    control/state3_i_135_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    14.981 r  control/state3_i_56/O
+                         net (fo=10, unplaced)        0.462    15.443    control/state3_i_56_n_0
+                         LUT2 (Prop_lut2_I0_O)        0.124    15.567 f  control/state3_i_63/O
+                         net (fo=1, unplaced)         0.941    16.508    control/state3_i_63_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    16.632 r  control/state3_i_25/O
+                         net (fo=7, unplaced)         0.484    17.116    control/state3_i_25_n_0
+                         LUT5 (Prop_lut5_I2_O)        0.124    17.240 r  control/state3_i_22/O
+                         net (fo=2, unplaced)         0.743    17.983    control/state3_i_22_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.124    18.107 r  control/state3_i_16/O
+                         net (fo=1, unplaced)         0.333    18.440    control/state3_i_16_n_0
+                         CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.595    19.035 r  control/state3_i_3/CO[3]
+                         net (fo=1, unplaced)         0.000    19.035    control/state3_i_3_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    19.152 r  control/state3_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    19.152    control/state3_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337    19.489 r  control/state3_i_1/O[1]
+                         net (fo=7, unplaced)         0.803    20.292    memory/B[10]
+                         DSP48E1 (Prop_dsp48e1_B[10]_P[5])
+                                                      3.835    24.127 r  memory/state3/P[5]
+                         net (fo=4, unplaced)         0.803    24.930    memory/state3_n_100
+                         LUT2 (Prop_lut2_I0_O)        0.124    25.054 r  memory/group_count[7]_i_70/O
+                         net (fo=1, unplaced)         0.000    25.054    memory/group_count[7]_i_70_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    25.587 r  memory/group_count_reg[7]_i_48/CO[3]
+                         net (fo=1, unplaced)         0.000    25.587    memory/group_count_reg[7]_i_48_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    25.704 r  memory/group_count_reg[7]_i_24/CO[3]
+                         net (fo=1, unplaced)         0.000    25.704    memory/group_count_reg[7]_i_24_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    25.821 r  memory/group_count_reg[7]_i_12/CO[3]
+                         net (fo=1, unplaced)         0.000    25.821    memory/group_count_reg[7]_i_12_n_0
+                         CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.281    26.102 f  memory/group_count_reg[7]_i_6/CO[0]
+                         net (fo=6, unplaced)         0.795    26.897    memory/group_count_reg[7]_i_6_n_3
+                         LUT5 (Prop_lut5_I4_O)        0.367    27.264 r  memory/chunk_count[11]_i_3/O
+                         net (fo=4, unplaced)         0.473    27.737    memory/chunk_count[11]_i_3_n_0
+                         LUT6 (Prop_lut6_I5_O)        0.124    27.861 r  memory/chunk_count[11]_i_1/O
+                         net (fo=22, unplaced)        0.535    28.396    memory/chunk_count[11]_i_1_n_0
+                         FDCE                                         r  memory/chunk_count_reg[10]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)       10.000    10.000 r  <hidden>
+                                                      0.000    10.000 r  clk
+                         net (fo=0)                   0.000    10.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.838    10.838 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.763    11.600    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.091    11.691 r  clk_IBUF_BUFG_inst/O
+                         net (fo=39151, unplaced)     0.439    12.130    memory/clk_IBUF_BUFG
+                         FDCE                                         r  memory/chunk_count_reg[10]/C
+                         clock pessimism              0.179    12.309    <hidden>
+                         clock uncertainty           -0.035    12.274    <hidden>
+                         FDCE (Setup_fdce_C_CE)      -0.202    12.072    memory/chunk_count_reg[10]
+  -------------------------------------------------------------------
+                         required time                         12.072    <hidden>
+                         arrival time                         -28.396    <hidden>
+  -------------------------------------------------------------------
+                         slack                                -16.324    <hidden>
+
+Slack (VIOLATED) :        -16.324ns  (required time - arrival time)
+  Source:                 control/cfg_reg[in_w][1]/C
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            memory/chunk_count_reg[11]/CE
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk rise@10.000ns - clk rise@0.000ns)
+  Data Path Delay:        25.942ns  (logic 10.212ns (39.365%)  route 15.730ns (60.635%))
+  Logic Levels:           31  (CARRY4=10 DSP48E1=1 LUT2=4 LUT3=2 LUT5=2 LUT6=12)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.130ns = ( 12.130 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.454ns
+    Clock Pessimism Removal (CPR):    0.179ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  <hidden>
+                                                      0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.971     0.971 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.803     1.774    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.096     1.870 r  clk_IBUF_BUFG_inst/O
+                         net (fo=39151, unplaced)     0.584     2.454    control/clk_IBUF_BUFG
+                         FDCE                                         r  control/cfg_reg[in_w][1]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.478     2.932 r  control/cfg_reg[in_w][1]/Q
+                         net (fo=22, unplaced)        0.825     3.757    control/cfg[in_w][1]
+                         LUT3 (Prop_lut3_I0_O)        0.295     4.052 r  control/state3_i_142/O
+                         net (fo=1, unplaced)         0.474     4.526    control/state3_i_142_n_0
+                         CARRY4 (Prop_carry4_DI[2]_CO[3])
+                                                      0.404     4.930 r  control/state3_i_59/CO[3]
+                         net (fo=1, unplaced)         0.000     4.930    control/state3_i_59_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.047 r  control/state3_i_106/CO[3]
+                         net (fo=1, unplaced)         0.000     5.047    control/state3_i_106_n_0
+                         CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.179     5.226 f  control/state3_i_45/CO[1]
+                         net (fo=14, unplaced)        0.662     5.888    control/state3_i_45_n_2
+                         LUT6 (Prop_lut6_I0_O)        0.332     6.220 r  control/state3_i_47/O
+                         net (fo=10, unplaced)        0.708     6.928    control/state3_i_47_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124     7.052 r  control/state3_i_46/O
+                         net (fo=8, unplaced)         0.487     7.539    control/state3_i_46_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.124     7.663 r  control/state3_i_111/O
+                         net (fo=1, unplaced)         0.941     8.604    control/state3_i_111_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124     8.728 r  control/state3_i_50/O
+                         net (fo=14, unplaced)        0.500     9.228    control/state3_i_50_n_0
+                         LUT2 (Prop_lut2_I1_O)        0.124     9.352 f  control/state3_i_228/O
+                         net (fo=1, unplaced)         0.732    10.084    control/state3_i_228_n_0
+                         LUT6 (Prop_lut6_I3_O)        0.124    10.208 r  control/state3_i_198/O
+                         net (fo=2, unplaced)         0.460    10.668    control/state3_i_198_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.124    10.792 r  control/state3_i_123/O
+                         net (fo=1, unplaced)         0.941    11.733    control/state3_i_123_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    11.857 r  control/state3_i_54/O
+                         net (fo=9, unplaced)         0.460    12.317    control/state3_i_54_n_0
+                         LUT3 (Prop_lut3_I0_O)        0.124    12.441 f  control/state3_i_131/O
+                         net (fo=1, unplaced)         0.732    13.173    control/state3_i_131_n_0
+                         LUT6 (Prop_lut6_I2_O)        0.124    13.297 r  control/state3_i_55/O
+                         net (fo=11, unplaced)        0.495    13.792    control/state3_i_55_n_0
+                         LUT2 (Prop_lut2_I1_O)        0.124    13.916 f  control/state3_i_135/O
+                         net (fo=1, unplaced)         0.941    14.857    control/state3_i_135_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    14.981 r  control/state3_i_56/O
+                         net (fo=10, unplaced)        0.462    15.443    control/state3_i_56_n_0
+                         LUT2 (Prop_lut2_I0_O)        0.124    15.567 f  control/state3_i_63/O
+                         net (fo=1, unplaced)         0.941    16.508    control/state3_i_63_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    16.632 r  control/state3_i_25/O
+                         net (fo=7, unplaced)         0.484    17.116    control/state3_i_25_n_0
+                         LUT5 (Prop_lut5_I2_O)        0.124    17.240 r  control/state3_i_22/O
+                         net (fo=2, unplaced)         0.743    17.983    control/state3_i_22_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.124    18.107 r  control/state3_i_16/O
+                         net (fo=1, unplaced)         0.333    18.440    control/state3_i_16_n_0
+                         CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.595    19.035 r  control/state3_i_3/CO[3]
+                         net (fo=1, unplaced)         0.000    19.035    control/state3_i_3_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    19.152 r  control/state3_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    19.152    control/state3_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337    19.489 r  control/state3_i_1/O[1]
+                         net (fo=7, unplaced)         0.803    20.292    memory/B[10]
+                         DSP48E1 (Prop_dsp48e1_B[10]_P[5])
+                                                      3.835    24.127 r  memory/state3/P[5]
+                         net (fo=4, unplaced)         0.803    24.930    memory/state3_n_100
+                         LUT2 (Prop_lut2_I0_O)        0.124    25.054 r  memory/group_count[7]_i_70/O
+                         net (fo=1, unplaced)         0.000    25.054    memory/group_count[7]_i_70_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    25.587 r  memory/group_count_reg[7]_i_48/CO[3]
+                         net (fo=1, unplaced)         0.000    25.587    memory/group_count_reg[7]_i_48_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    25.704 r  memory/group_count_reg[7]_i_24/CO[3]
+                         net (fo=1, unplaced)         0.000    25.704    memory/group_count_reg[7]_i_24_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    25.821 r  memory/group_count_reg[7]_i_12/CO[3]
+                         net (fo=1, unplaced)         0.000    25.821    memory/group_count_reg[7]_i_12_n_0
+                         CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.281    26.102 f  memory/group_count_reg[7]_i_6/CO[0]
+                         net (fo=6, unplaced)         0.795    26.897    memory/group_count_reg[7]_i_6_n_3
+                         LUT5 (Prop_lut5_I4_O)        0.367    27.264 r  memory/chunk_count[11]_i_3/O
+                         net (fo=4, unplaced)         0.473    27.737    memory/chunk_count[11]_i_3_n_0
+                         LUT6 (Prop_lut6_I5_O)        0.124    27.861 r  memory/chunk_count[11]_i_1/O
+                         net (fo=22, unplaced)        0.535    28.396    memory/chunk_count[11]_i_1_n_0
+                         FDCE                                         r  memory/chunk_count_reg[11]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)       10.000    10.000 r  <hidden>
+                                                      0.000    10.000 r  clk
+                         net (fo=0)                   0.000    10.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.838    10.838 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.763    11.600    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.091    11.691 r  clk_IBUF_BUFG_inst/O
+                         net (fo=39151, unplaced)     0.439    12.130    memory/clk_IBUF_BUFG
+                         FDCE                                         r  memory/chunk_count_reg[11]/C
+                         clock pessimism              0.179    12.309    <hidden>
+                         clock uncertainty           -0.035    12.274    <hidden>
+                         FDCE (Setup_fdce_C_CE)      -0.202    12.072    memory/chunk_count_reg[11]
+  -------------------------------------------------------------------
+                         required time                         12.072    <hidden>
+                         arrival time                         -28.396    <hidden>
+  -------------------------------------------------------------------
+                         slack                                -16.324    <hidden>
+
+Slack (VIOLATED) :        -16.324ns  (required time - arrival time)
+  Source:                 control/cfg_reg[in_w][1]/C
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            memory/chunk_count_reg[1]/CE
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk rise@10.000ns - clk rise@0.000ns)
+  Data Path Delay:        25.942ns  (logic 10.212ns (39.365%)  route 15.730ns (60.635%))
+  Logic Levels:           31  (CARRY4=10 DSP48E1=1 LUT2=4 LUT3=2 LUT5=2 LUT6=12)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.130ns = ( 12.130 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.454ns
+    Clock Pessimism Removal (CPR):    0.179ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  <hidden>
+                                                      0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.971     0.971 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.803     1.774    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.096     1.870 r  clk_IBUF_BUFG_inst/O
+                         net (fo=39151, unplaced)     0.584     2.454    control/clk_IBUF_BUFG
+                         FDCE                                         r  control/cfg_reg[in_w][1]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.478     2.932 r  control/cfg_reg[in_w][1]/Q
+                         net (fo=22, unplaced)        0.825     3.757    control/cfg[in_w][1]
+                         LUT3 (Prop_lut3_I0_O)        0.295     4.052 r  control/state3_i_142/O
+                         net (fo=1, unplaced)         0.474     4.526    control/state3_i_142_n_0
+                         CARRY4 (Prop_carry4_DI[2]_CO[3])
+                                                      0.404     4.930 r  control/state3_i_59/CO[3]
+                         net (fo=1, unplaced)         0.000     4.930    control/state3_i_59_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.047 r  control/state3_i_106/CO[3]
+                         net (fo=1, unplaced)         0.000     5.047    control/state3_i_106_n_0
+                         CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.179     5.226 f  control/state3_i_45/CO[1]
+                         net (fo=14, unplaced)        0.662     5.888    control/state3_i_45_n_2
+                         LUT6 (Prop_lut6_I0_O)        0.332     6.220 r  control/state3_i_47/O
+                         net (fo=10, unplaced)        0.708     6.928    control/state3_i_47_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124     7.052 r  control/state3_i_46/O
+                         net (fo=8, unplaced)         0.487     7.539    control/state3_i_46_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.124     7.663 r  control/state3_i_111/O
+                         net (fo=1, unplaced)         0.941     8.604    control/state3_i_111_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124     8.728 r  control/state3_i_50/O
+                         net (fo=14, unplaced)        0.500     9.228    control/state3_i_50_n_0
+                         LUT2 (Prop_lut2_I1_O)        0.124     9.352 f  control/state3_i_228/O
+                         net (fo=1, unplaced)         0.732    10.084    control/state3_i_228_n_0
+                         LUT6 (Prop_lut6_I3_O)        0.124    10.208 r  control/state3_i_198/O
+                         net (fo=2, unplaced)         0.460    10.668    control/state3_i_198_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.124    10.792 r  control/state3_i_123/O
+                         net (fo=1, unplaced)         0.941    11.733    control/state3_i_123_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    11.857 r  control/state3_i_54/O
+                         net (fo=9, unplaced)         0.460    12.317    control/state3_i_54_n_0
+                         LUT3 (Prop_lut3_I0_O)        0.124    12.441 f  control/state3_i_131/O
+                         net (fo=1, unplaced)         0.732    13.173    control/state3_i_131_n_0
+                         LUT6 (Prop_lut6_I2_O)        0.124    13.297 r  control/state3_i_55/O
+                         net (fo=11, unplaced)        0.495    13.792    control/state3_i_55_n_0
+                         LUT2 (Prop_lut2_I1_O)        0.124    13.916 f  control/state3_i_135/O
+                         net (fo=1, unplaced)         0.941    14.857    control/state3_i_135_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    14.981 r  control/state3_i_56/O
+                         net (fo=10, unplaced)        0.462    15.443    control/state3_i_56_n_0
+                         LUT2 (Prop_lut2_I0_O)        0.124    15.567 f  control/state3_i_63/O
+                         net (fo=1, unplaced)         0.941    16.508    control/state3_i_63_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    16.632 r  control/state3_i_25/O
+                         net (fo=7, unplaced)         0.484    17.116    control/state3_i_25_n_0
+                         LUT5 (Prop_lut5_I2_O)        0.124    17.240 r  control/state3_i_22/O
+                         net (fo=2, unplaced)         0.743    17.983    control/state3_i_22_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.124    18.107 r  control/state3_i_16/O
+                         net (fo=1, unplaced)         0.333    18.440    control/state3_i_16_n_0
+                         CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.595    19.035 r  control/state3_i_3/CO[3]
+                         net (fo=1, unplaced)         0.000    19.035    control/state3_i_3_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    19.152 r  control/state3_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    19.152    control/state3_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337    19.489 r  control/state3_i_1/O[1]
+                         net (fo=7, unplaced)         0.803    20.292    memory/B[10]
+                         DSP48E1 (Prop_dsp48e1_B[10]_P[5])
+                                                      3.835    24.127 r  memory/state3/P[5]
+                         net (fo=4, unplaced)         0.803    24.930    memory/state3_n_100
+                         LUT2 (Prop_lut2_I0_O)        0.124    25.054 r  memory/group_count[7]_i_70/O
+                         net (fo=1, unplaced)         0.000    25.054    memory/group_count[7]_i_70_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    25.587 r  memory/group_count_reg[7]_i_48/CO[3]
+                         net (fo=1, unplaced)         0.000    25.587    memory/group_count_reg[7]_i_48_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    25.704 r  memory/group_count_reg[7]_i_24/CO[3]
+                         net (fo=1, unplaced)         0.000    25.704    memory/group_count_reg[7]_i_24_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    25.821 r  memory/group_count_reg[7]_i_12/CO[3]
+                         net (fo=1, unplaced)         0.000    25.821    memory/group_count_reg[7]_i_12_n_0
+                         CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.281    26.102 f  memory/group_count_reg[7]_i_6/CO[0]
+                         net (fo=6, unplaced)         0.795    26.897    memory/group_count_reg[7]_i_6_n_3
+                         LUT5 (Prop_lut5_I4_O)        0.367    27.264 r  memory/chunk_count[11]_i_3/O
+                         net (fo=4, unplaced)         0.473    27.737    memory/chunk_count[11]_i_3_n_0
+                         LUT6 (Prop_lut6_I5_O)        0.124    27.861 r  memory/chunk_count[11]_i_1/O
+                         net (fo=22, unplaced)        0.535    28.396    memory/chunk_count[11]_i_1_n_0
+                         FDCE                                         r  memory/chunk_count_reg[1]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)       10.000    10.000 r  <hidden>
+                                                      0.000    10.000 r  clk
+                         net (fo=0)                   0.000    10.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.838    10.838 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.763    11.600    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.091    11.691 r  clk_IBUF_BUFG_inst/O
+                         net (fo=39151, unplaced)     0.439    12.130    memory/clk_IBUF_BUFG
+                         FDCE                                         r  memory/chunk_count_reg[1]/C
+                         clock pessimism              0.179    12.309    <hidden>
+                         clock uncertainty           -0.035    12.274    <hidden>
+                         FDCE (Setup_fdce_C_CE)      -0.202    12.072    memory/chunk_count_reg[1]
+  -------------------------------------------------------------------
+                         required time                         12.072    <hidden>
+                         arrival time                         -28.396    <hidden>
+  -------------------------------------------------------------------
+                         slack                                -16.324    <hidden>
+
+Slack (VIOLATED) :        -16.324ns  (required time - arrival time)
+  Source:                 control/cfg_reg[in_w][1]/C
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            memory/chunk_count_reg[2]/CE
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk rise@10.000ns - clk rise@0.000ns)
+  Data Path Delay:        25.942ns  (logic 10.212ns (39.365%)  route 15.730ns (60.635%))
+  Logic Levels:           31  (CARRY4=10 DSP48E1=1 LUT2=4 LUT3=2 LUT5=2 LUT6=12)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.130ns = ( 12.130 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.454ns
+    Clock Pessimism Removal (CPR):    0.179ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  <hidden>
+                                                      0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.971     0.971 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.803     1.774    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.096     1.870 r  clk_IBUF_BUFG_inst/O
+                         net (fo=39151, unplaced)     0.584     2.454    control/clk_IBUF_BUFG
+                         FDCE                                         r  control/cfg_reg[in_w][1]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.478     2.932 r  control/cfg_reg[in_w][1]/Q
+                         net (fo=22, unplaced)        0.825     3.757    control/cfg[in_w][1]
+                         LUT3 (Prop_lut3_I0_O)        0.295     4.052 r  control/state3_i_142/O
+                         net (fo=1, unplaced)         0.474     4.526    control/state3_i_142_n_0
+                         CARRY4 (Prop_carry4_DI[2]_CO[3])
+                                                      0.404     4.930 r  control/state3_i_59/CO[3]
+                         net (fo=1, unplaced)         0.000     4.930    control/state3_i_59_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.047 r  control/state3_i_106/CO[3]
+                         net (fo=1, unplaced)         0.000     5.047    control/state3_i_106_n_0
+                         CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.179     5.226 f  control/state3_i_45/CO[1]
+                         net (fo=14, unplaced)        0.662     5.888    control/state3_i_45_n_2
+                         LUT6 (Prop_lut6_I0_O)        0.332     6.220 r  control/state3_i_47/O
+                         net (fo=10, unplaced)        0.708     6.928    control/state3_i_47_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124     7.052 r  control/state3_i_46/O
+                         net (fo=8, unplaced)         0.487     7.539    control/state3_i_46_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.124     7.663 r  control/state3_i_111/O
+                         net (fo=1, unplaced)         0.941     8.604    control/state3_i_111_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124     8.728 r  control/state3_i_50/O
+                         net (fo=14, unplaced)        0.500     9.228    control/state3_i_50_n_0
+                         LUT2 (Prop_lut2_I1_O)        0.124     9.352 f  control/state3_i_228/O
+                         net (fo=1, unplaced)         0.732    10.084    control/state3_i_228_n_0
+                         LUT6 (Prop_lut6_I3_O)        0.124    10.208 r  control/state3_i_198/O
+                         net (fo=2, unplaced)         0.460    10.668    control/state3_i_198_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.124    10.792 r  control/state3_i_123/O
+                         net (fo=1, unplaced)         0.941    11.733    control/state3_i_123_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    11.857 r  control/state3_i_54/O
+                         net (fo=9, unplaced)         0.460    12.317    control/state3_i_54_n_0
+                         LUT3 (Prop_lut3_I0_O)        0.124    12.441 f  control/state3_i_131/O
+                         net (fo=1, unplaced)         0.732    13.173    control/state3_i_131_n_0
+                         LUT6 (Prop_lut6_I2_O)        0.124    13.297 r  control/state3_i_55/O
+                         net (fo=11, unplaced)        0.495    13.792    control/state3_i_55_n_0
+                         LUT2 (Prop_lut2_I1_O)        0.124    13.916 f  control/state3_i_135/O
+                         net (fo=1, unplaced)         0.941    14.857    control/state3_i_135_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    14.981 r  control/state3_i_56/O
+                         net (fo=10, unplaced)        0.462    15.443    control/state3_i_56_n_0
+                         LUT2 (Prop_lut2_I0_O)        0.124    15.567 f  control/state3_i_63/O
+                         net (fo=1, unplaced)         0.941    16.508    control/state3_i_63_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    16.632 r  control/state3_i_25/O
+                         net (fo=7, unplaced)         0.484    17.116    control/state3_i_25_n_0
+                         LUT5 (Prop_lut5_I2_O)        0.124    17.240 r  control/state3_i_22/O
+                         net (fo=2, unplaced)         0.743    17.983    control/state3_i_22_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.124    18.107 r  control/state3_i_16/O
+                         net (fo=1, unplaced)         0.333    18.440    control/state3_i_16_n_0
+                         CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.595    19.035 r  control/state3_i_3/CO[3]
+                         net (fo=1, unplaced)         0.000    19.035    control/state3_i_3_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    19.152 r  control/state3_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    19.152    control/state3_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337    19.489 r  control/state3_i_1/O[1]
+                         net (fo=7, unplaced)         0.803    20.292    memory/B[10]
+                         DSP48E1 (Prop_dsp48e1_B[10]_P[5])
+                                                      3.835    24.127 r  memory/state3/P[5]
+                         net (fo=4, unplaced)         0.803    24.930    memory/state3_n_100
+                         LUT2 (Prop_lut2_I0_O)        0.124    25.054 r  memory/group_count[7]_i_70/O
+                         net (fo=1, unplaced)         0.000    25.054    memory/group_count[7]_i_70_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    25.587 r  memory/group_count_reg[7]_i_48/CO[3]
+                         net (fo=1, unplaced)         0.000    25.587    memory/group_count_reg[7]_i_48_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    25.704 r  memory/group_count_reg[7]_i_24/CO[3]
+                         net (fo=1, unplaced)         0.000    25.704    memory/group_count_reg[7]_i_24_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    25.821 r  memory/group_count_reg[7]_i_12/CO[3]
+                         net (fo=1, unplaced)         0.000    25.821    memory/group_count_reg[7]_i_12_n_0
+                         CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.281    26.102 f  memory/group_count_reg[7]_i_6/CO[0]
+                         net (fo=6, unplaced)         0.795    26.897    memory/group_count_reg[7]_i_6_n_3
+                         LUT5 (Prop_lut5_I4_O)        0.367    27.264 r  memory/chunk_count[11]_i_3/O
+                         net (fo=4, unplaced)         0.473    27.737    memory/chunk_count[11]_i_3_n_0
+                         LUT6 (Prop_lut6_I5_O)        0.124    27.861 r  memory/chunk_count[11]_i_1/O
+                         net (fo=22, unplaced)        0.535    28.396    memory/chunk_count[11]_i_1_n_0
+                         FDCE                                         r  memory/chunk_count_reg[2]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)       10.000    10.000 r  <hidden>
+                                                      0.000    10.000 r  clk
+                         net (fo=0)                   0.000    10.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.838    10.838 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.763    11.600    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.091    11.691 r  clk_IBUF_BUFG_inst/O
+                         net (fo=39151, unplaced)     0.439    12.130    memory/clk_IBUF_BUFG
+                         FDCE                                         r  memory/chunk_count_reg[2]/C
+                         clock pessimism              0.179    12.309    <hidden>
+                         clock uncertainty           -0.035    12.274    <hidden>
+                         FDCE (Setup_fdce_C_CE)      -0.202    12.072    memory/chunk_count_reg[2]
+  -------------------------------------------------------------------
+                         required time                         12.072    <hidden>
+                         arrival time                         -28.396    <hidden>
+  -------------------------------------------------------------------
+                         slack                                -16.324    <hidden>
+
+Slack (VIOLATED) :        -16.324ns  (required time - arrival time)
+  Source:                 control/cfg_reg[in_w][1]/C
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Destination:            memory/chunk_count_reg[3]/CE
+                            (rising edge-triggered cell FDCE clocked by clk  {rise@0.000ns fall@5.000ns period=10.000ns})
+  Path Group:             clk
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            10.000ns  (clk rise@10.000ns - clk rise@0.000ns)
+  Data Path Delay:        25.942ns  (logic 10.212ns (39.365%)  route 15.730ns (60.635%))
+  Logic Levels:           31  (CARRY4=10 DSP48E1=1 LUT2=4 LUT3=2 LUT5=2 LUT6=12)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    2.130ns = ( 12.130 - 10.000 ) 
+    Source Clock Delay      (SCD):    2.454ns
+    Clock Pessimism Removal (CPR):    0.179ns
+  Clock Uncertainty:      0.035ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk rise edge)        0.000     0.000 r  <hidden>
+                                                      0.000     0.000 r  clk
+                         net (fo=0)                   0.000     0.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.971     0.971 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.803     1.774    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.096     1.870 r  clk_IBUF_BUFG_inst/O
+                         net (fo=39151, unplaced)     0.584     2.454    control/clk_IBUF_BUFG
+                         FDCE                                         r  control/cfg_reg[in_w][1]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.478     2.932 r  control/cfg_reg[in_w][1]/Q
+                         net (fo=22, unplaced)        0.825     3.757    control/cfg[in_w][1]
+                         LUT3 (Prop_lut3_I0_O)        0.295     4.052 r  control/state3_i_142/O
+                         net (fo=1, unplaced)         0.474     4.526    control/state3_i_142_n_0
+                         CARRY4 (Prop_carry4_DI[2]_CO[3])
+                                                      0.404     4.930 r  control/state3_i_59/CO[3]
+                         net (fo=1, unplaced)         0.000     4.930    control/state3_i_59_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     5.047 r  control/state3_i_106/CO[3]
+                         net (fo=1, unplaced)         0.000     5.047    control/state3_i_106_n_0
+                         CARRY4 (Prop_carry4_CI_CO[1])
+                                                      0.179     5.226 f  control/state3_i_45/CO[1]
+                         net (fo=14, unplaced)        0.662     5.888    control/state3_i_45_n_2
+                         LUT6 (Prop_lut6_I0_O)        0.332     6.220 r  control/state3_i_47/O
+                         net (fo=10, unplaced)        0.708     6.928    control/state3_i_47_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124     7.052 r  control/state3_i_46/O
+                         net (fo=8, unplaced)         0.487     7.539    control/state3_i_46_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.124     7.663 r  control/state3_i_111/O
+                         net (fo=1, unplaced)         0.941     8.604    control/state3_i_111_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124     8.728 r  control/state3_i_50/O
+                         net (fo=14, unplaced)        0.500     9.228    control/state3_i_50_n_0
+                         LUT2 (Prop_lut2_I1_O)        0.124     9.352 f  control/state3_i_228/O
+                         net (fo=1, unplaced)         0.732    10.084    control/state3_i_228_n_0
+                         LUT6 (Prop_lut6_I3_O)        0.124    10.208 r  control/state3_i_198/O
+                         net (fo=2, unplaced)         0.460    10.668    control/state3_i_198_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.124    10.792 r  control/state3_i_123/O
+                         net (fo=1, unplaced)         0.941    11.733    control/state3_i_123_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    11.857 r  control/state3_i_54/O
+                         net (fo=9, unplaced)         0.460    12.317    control/state3_i_54_n_0
+                         LUT3 (Prop_lut3_I0_O)        0.124    12.441 f  control/state3_i_131/O
+                         net (fo=1, unplaced)         0.732    13.173    control/state3_i_131_n_0
+                         LUT6 (Prop_lut6_I2_O)        0.124    13.297 r  control/state3_i_55/O
+                         net (fo=11, unplaced)        0.495    13.792    control/state3_i_55_n_0
+                         LUT2 (Prop_lut2_I1_O)        0.124    13.916 f  control/state3_i_135/O
+                         net (fo=1, unplaced)         0.941    14.857    control/state3_i_135_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    14.981 r  control/state3_i_56/O
+                         net (fo=10, unplaced)        0.462    15.443    control/state3_i_56_n_0
+                         LUT2 (Prop_lut2_I0_O)        0.124    15.567 f  control/state3_i_63/O
+                         net (fo=1, unplaced)         0.941    16.508    control/state3_i_63_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    16.632 r  control/state3_i_25/O
+                         net (fo=7, unplaced)         0.484    17.116    control/state3_i_25_n_0
+                         LUT5 (Prop_lut5_I2_O)        0.124    17.240 r  control/state3_i_22/O
+                         net (fo=2, unplaced)         0.743    17.983    control/state3_i_22_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.124    18.107 r  control/state3_i_16/O
+                         net (fo=1, unplaced)         0.333    18.440    control/state3_i_16_n_0
+                         CARRY4 (Prop_carry4_CYINIT_CO[3])
+                                                      0.595    19.035 r  control/state3_i_3/CO[3]
+                         net (fo=1, unplaced)         0.000    19.035    control/state3_i_3_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    19.152 r  control/state3_i_2/CO[3]
+                         net (fo=1, unplaced)         0.000    19.152    control/state3_i_2_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337    19.489 r  control/state3_i_1/O[1]
+                         net (fo=7, unplaced)         0.803    20.292    memory/B[10]
+                         DSP48E1 (Prop_dsp48e1_B[10]_P[5])
+                                                      3.835    24.127 r  memory/state3/P[5]
+                         net (fo=4, unplaced)         0.803    24.930    memory/state3_n_100
+                         LUT2 (Prop_lut2_I0_O)        0.124    25.054 r  memory/group_count[7]_i_70/O
+                         net (fo=1, unplaced)         0.000    25.054    memory/group_count[7]_i_70_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    25.587 r  memory/group_count_reg[7]_i_48/CO[3]
+                         net (fo=1, unplaced)         0.000    25.587    memory/group_count_reg[7]_i_48_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    25.704 r  memory/group_count_reg[7]_i_24/CO[3]
+                         net (fo=1, unplaced)         0.000    25.704    memory/group_count_reg[7]_i_24_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    25.821 r  memory/group_count_reg[7]_i_12/CO[3]
+                         net (fo=1, unplaced)         0.000    25.821    memory/group_count_reg[7]_i_12_n_0
+                         CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.281    26.102 f  memory/group_count_reg[7]_i_6/CO[0]
+                         net (fo=6, unplaced)         0.795    26.897    memory/group_count_reg[7]_i_6_n_3
+                         LUT5 (Prop_lut5_I4_O)        0.367    27.264 r  memory/chunk_count[11]_i_3/O
+                         net (fo=4, unplaced)         0.473    27.737    memory/chunk_count[11]_i_3_n_0
+                         LUT6 (Prop_lut6_I5_O)        0.124    27.861 r  memory/chunk_count[11]_i_1/O
+                         net (fo=22, unplaced)        0.535    28.396    memory/chunk_count[11]_i_1_n_0
+                         FDCE                                         r  memory/chunk_count_reg[3]/CE
+  -------------------------------------------------------------------    -------------------
+
+                         (clock clk rise edge)       10.000    10.000 r  <hidden>
+                                                      0.000    10.000 r  clk
+                         net (fo=0)                   0.000    10.000    clk
+                         IBUF (Prop_ibuf_I_O)         0.838    10.838 r  clk_IBUF_inst/O
+                         net (fo=1, unplaced)         0.763    11.600    clk_IBUF
+                         BUFG (Prop_bufg_I_O)         0.091    11.691 r  clk_IBUF_BUFG_inst/O
+                         net (fo=39151, unplaced)     0.439    12.130    memory/clk_IBUF_BUFG
+                         FDCE                                         r  memory/chunk_count_reg[3]/C
+                         clock pessimism              0.179    12.309    <hidden>
+                         clock uncertainty           -0.035    12.274    <hidden>
+                         FDCE (Setup_fdce_C_CE)      -0.202    12.072    memory/chunk_count_reg[3]
+  -------------------------------------------------------------------
+                         required time                         12.072    <hidden>
+                         arrival time                         -28.396    <hidden>
+  -------------------------------------------------------------------
+                         slack                                -16.324    <hidden>
+
+
+
+

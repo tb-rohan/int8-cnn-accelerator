@@ -1,0 +1,32 @@
+{
+  "checkpoint": "artifacts\\mnist_cnn.pt",
+  "test_samples": 10000,
+  "calibration_samples": 1024,
+  "calibration_seed": 2027,
+  "input_scale": 0.007874015748031496,
+  "activation_scales": [
+    0.026722975603238806,
+    0.09152670732633335,
+    0.2574637105145792
+  ],
+  "fp32_correct": 9639,
+  "fp32_incorrect": 361,
+  "fp32_accuracy": 0.9639,
+  "int8_correct": 9644,
+  "int8_incorrect": 356,
+  "int8_accuracy": 0.9644,
+  "layer_quant_mult_shift": [
+    [
+      46477,
+      25
+    ],
+    [
+      42739,
+      25
+    ],
+    [
+      46610,
+      25
+    ]
+  ]
+}

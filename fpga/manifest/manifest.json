@@ -1,0 +1,44 @@
+{
+  "project_name": "ATHENA_INT8_CNN_ACCELERATOR",
+  "version": "1.0.0",
+  "target_fpga": {
+    "part": "xc7a100tcsg324-1",
+    "family": "artix7",
+    "architecture": "artix7",
+    "package": "csg324",
+    "speed_grade": "-1",
+    "description": "AMD/Xilinx Artix-7 100T FPGA (Standard Educational Target, e.g., Digilent Nexys A7-100T)"
+  },
+  "toolchain": {
+    "tool": "AMD Vivado Design Suite",
+    "version": "2026.1 (64-bit)",
+    "build": "6511674",
+    "license": "Vivado Design Suite BASIC (Active through 17-Oct-2027)"
+  },
+  "top_module": "accel_top",
+  "sources": [
+    "INT8/rtl/cnn_pkg.sv",
+    "INT8/rtl/pe.sv",
+    "INT8/rtl/pe_array.sv",
+    "INT8/rtl/post_proc.sv",
+    "INT8/rtl/mem_ctrl.sv",
+    "INT8/rtl/ctrl_unit.sv",
+    "INT8/rtl/accel_top.sv"
+  ],
+  "constraints": [
+    "INT8/fpga/constraints/clock.xdc"
+  ],
+  "clock_spec": {
+    "port": "clk",
+    "period_ns": 10.0,
+    "target_freq_mhz": 100.0,
+    "constraint_type": "Exploratory analysis target"
+  },
+  "scripts": {
+    "synthesis_tcl": "INT8/fpga/scripts/run_synthesis.tcl",
+    "implementation_tcl": "INT8/fpga/scripts/run_implementation.tcl",
+    "project_tcl": "INT8/fpga/scripts/create_project.tcl",
+    "windows_batch": "INT8/fpga/run_synthesis.bat",
+    "powershell": "INT8/fpga/run_synthesis.ps1"
+  }
+}

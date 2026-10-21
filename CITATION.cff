@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this hardware accelerator design or verification suite in your research or educational work, please cite it as below."
+title: "Programmable INT8 CNN Hardware Accelerator with 100 MHz Timing Closure on AMD Artix-7"
+type: software
+authors:
+  - name: "ATHENA Hardware Acceleration Project"
+abstract: >-
+  A synthesizable SystemVerilog INT8 CNN hardware accelerator featuring a 4x4
+  weight-stationary systolic array, dual-port synchronous Block RAM ping-pong
+  buffers, 4-stage post-processing pipeline, and AXI4-Lite host interface.
+  Achieves 100.0 MHz static timing closure on AMD Artix-7 200T FPGA with full
+  verification against a Python integer golden reference and RV32I SoC co-simulation.
+keywords:
+  - "CNN accelerator"
+  - "systolic array"
+  - "FPGA"
+  - "SystemVerilog"
+  - "Artix-7"
+  - "INT8 quantization"
+  - "RISC-V SoC"
+license: MIT
+version: 1.4.0
+date-released: 2026-10-21

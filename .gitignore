@@ -1,0 +1,51 @@
+# Python build and cache artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# Simulation binaries, temporary waveform dumps, and logs
+*.vvp
+*.vcd
+*.fst
+build/
+sim_diff.vvp
+tb_top.vvp
+
+# EDA Tools (Vivado / Yosys) intermediate outputs
+.Xil/
+*.jou
+*.log
+*.backup.jou
+*.backup.log
+*.wdf
+clockInfo.txt
+device_candidates.txt
+device_support.txt
+query_candidates.tcl
+query_devices.tcl
+synth/reports/*.rtlil
+synth/reports/*.log
+synth/reports/*.err
+
+# Large temporary inference runs and manual dumps
+artifacts/manual/
+artifacts/rtl_*/
+backup_before_timing_closure/
+
+# Track essential calibrated model artifacts
+!artifacts/mnist_cnn.pt
+!artifacts/mnist_int8_calibration.json
+!artifacts/mnist_int8_evaluation.json
+
+# Track smoke test vectors for regression reproducibility
+vectors/*
+!vectors/smoke/
+!vectors/smoke/**
+
+# Datasets (large download folders)
+data/MNIST/processed/
