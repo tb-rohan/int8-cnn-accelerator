@@ -185,6 +185,7 @@ The accelerator is designed to interface with an RV32I processor located in a co
 | `0x00` | `CTRL` | R/W | Bit [0]: Start pulse (trigger inference), Bit [1]: Interrupt enable (`irq_en`) |
 | `0x04` | `STATUS` | RO | Bit [0]: Busy, Bit [1]: Done, Bit [2]: Descriptor error |
 | `0x08` | `VERSION` | RO | Static ID `0x01040408` (v1.4, $N=4$, $W=8$) |
+| `0x0C` | `ADAPTER_STATUS` | R/W1C | *Decoded by SoC bus adapter:* Bit [0]: Watchdog timeout error (W1C), Bit [1]: Adapter busy, Bit [2]: IRQ status, Bits [31:16]: Latched watchdog count |
 | `0x10` | `DMA_ADDR` | R/W | 14-bit byte address pointer (auto-increments on `DMA_DATA` write) |
 | `0x14` | `DMA_DATA` | WO | Bits [7:0]: Byte data, Bits [9:8]: Target (0=weights, 1=features, 2=biases) |
 | `0x18` | `RES_ADDR` | R/W | Result byte address pointer (issues read strobe to feature buffer) |
@@ -227,11 +228,39 @@ Generates routed checkpoints and reports under `fpga/reports/a200t/`.
 
 ---
 
-## Current Limitations
+## Current Limitations & Future Roadmap (v2.0)
 
-1. **No Physical Hardware Validation:** The project has been verified extensively in simulation and implemented through Vivado place-and-route. It has not yet been tested on physical FPGA development boards.
-2. **Out-of-Context Implementation:** The accelerator is synthesized as an Out-of-Context IP block. Bitstream generation (`write_bitstream`) was not run because physical package pin assignments (`PACKAGE_PIN` and `IOSTANDARD`) are defined at the SoC board wrapper level.
+### Current Architectural Boundaries
+1. **No Physical Hardware Validation:** The project has been verified extensively in cycle-accurate simulation and implemented through Vivado place-and-route. It has not yet been demonstrated on physical FPGA development boards.
+2. **Out-of-Context Implementation:** The accelerator is synthesized as an Out-of-Context IP block (`-mode out_of_context`). Bitstream generation (`write_bitstream`) was not executed because physical package pin assignments (`PACKAGE_PIN` and `IOSTANDARD`) are defined at the SoC board wrapper level.
 3. **Fixed Systolic Dimension:** The systolic array size is fixed at $4 \times 4$. Channel counts must be padded to multiples of 4.
+
+### Future Architecture Roadmap (v2.0)
+1. **Autonomous AXI4-Master Burst DMA:** Replace host-driven MMIO DMA streaming with an autonomous scatter-gather DMA master capable of bursting weights and activations directly from external DDR memory over AXI4.
+2. **Dynamic Tensor Shape Tiling:** Extend the control unit FSM and memory sequencer to support arbitrary tensor dimensions and non-multiple-of-4 channels without software padding.
+3. **Fine-Grained Activation Clock-Gating:** Implement dynamic operand isolation and clock-gating on PE accumulators when activations or weights are zero, cutting dynamic power during sparse inference.
+4. **Physical Board Bring-Up:** Package-pin assignment, MMCM clock derivation, and board-level UART transceiver wrapper for physical FPGA validation on Digilent Basys 3 or Nexys Video.
+
+---
+
+## Technical Interview Defense & Microarchitecture FAQ
+
+### Q1: Why a 4×4 Weight-Stationary (WS) Systolic Array?
+Convolutional layers exhibit extreme spatial weight reuse. In weight-stationary dataflow, 8-bit signed filter weights are loaded into local PE registers (`w_reg`) and held stationary while activation vectors stream horizontally across rows. This minimizes high-capacitance Block RAM read toggles, drastically reducing memory bandwidth pressure and on-chip dynamic power.
+
+### Q2: How did you eliminate the 28,160 Distributed RAM LUT bloat?
+Early implementations used asynchronous combinational reads into unpacked arrays in `mem_ctrl.sv`. Because AMD 7-series Block RAM primitives (`RAMB18E1`/`RAMB36E1`) require synchronous registered read addresses, the Vivado synthesis tool was forced to infer Distributed LUTRAM, bloating utilization to 28,160 LUTs (over 60% of SLICEM capacity). By refactoring memory accesses into explicit synchronous clocked processes (`always_ff @(posedge clk)`), Vivado mapped storage cleanly onto **8 RAMB36E1** feature tiles and **160 RAMB18E1** weight tiles, reducing Distributed RAM LUTs to **0 (100% elimination)**.
+
+### Q3: What is the exact systolic propagation latency?
+With input diagonal skewing registers ($D_i = i$, up to 3 cycles delay) and output deskewing registers ($3 - j$ cycles delay), the pipeline latency from activation entry to the first valid deskewed partial sum exiting the array is **$2N - 1 = 7$ clock cycles** for an $N=4$ array.
+
+### Q4: How is fixed-point convergent rounding implemented?
+Standard arithmetic right-shift (`>>>`) truncates towards negative infinity ($\lfloor x / 2^n \rfloor$), introducing negative statistical bias over deep layers. In `post_proc.sv`, we add a rounding half-up constant ($1 \ll (\text{shift} - 1)$) prior to right-shifting:
+$$\text{Rounded}(x) = (x + 2^{\text{shift}-1}) \gg \text{shift}$$
+This ensures symmetric nearest-integer rounding matching the Python PyTorch quantized model bit-for-bit.
+
+### Q5: How does the bus watchdog timer differ from full inference latency?
+The 16-bit hardware watchdog timer (limit: 65,535 cycles) in the SoC bus adapter monitors **individual AXI4-Lite bus read/write handshakes** (which complete in 1–2 cycles each). Full inference execution takes **53,836 clock cycles**. During inference, firmware polls the status register; each individual poll transaction completes in 2 cycles and resets the watchdog counter to zero, completely decoupling transaction-level hang protection from multi-thousand-cycle inference compute.
 
 ---
 
