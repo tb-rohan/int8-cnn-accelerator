@@ -25,6 +25,7 @@ module post_proc import cnn_pkg::*; (
   logic signed [48:0] product_stage [0:N-1];
   logic signed [49:0] shifted_stage [0:N-1];
   logic [4:0] shift_stage [0:2];
+  logic [15:0] mult_stage [0:1];
   logic [2:0] relu_stage;
   logic [3:0] valid_stage;
   integer i;
@@ -39,6 +40,8 @@ module post_proc import cnn_pkg::*; (
       shift_stage[0] <= '0;
       shift_stage[1] <= '0;
       shift_stage[2] <= '0;
+      mult_stage[0] <= '0;
+      mult_stage[1] <= '0;
       for (i = 0; i < TILE_P; i = i + 1)
         for (j = 0; j < N; j = j + 1)
           acc_buf[i][j] <= '0;
@@ -69,7 +72,8 @@ module post_proc import cnn_pkg::*; (
         end
         if (psum_last) begin
           shift_stage[0] <= cfg.quant_shift;
-          relu_stage[0] <= cfg.relu_en;
+          mult_stage[0]  <= cfg.quant_mult;
+          relu_stage[0]  <= cfg.relu_en;
         end
       end
 
@@ -77,11 +81,12 @@ module post_proc import cnn_pkg::*; (
         for (j = 0; j < N; j = j + 1)
           biased_stage[j] <= $signed({sum_stage[j][ACC_W-1], sum_stage[j]}) +
               $signed(bias_stage[j]);
+        mult_stage[1] <= mult_stage[0];
       end
       if (valid_stage[1]) begin
         for (j = 0; j < N; j = j + 1)
           product_stage[j] <= $signed({{16{biased_stage[j][ACC_W]}}, biased_stage[j]}) *
-              $signed({32'b0, cfg.quant_mult});
+              $signed({32'b0, mult_stage[1]});
         shift_stage[1] <= shift_stage[0];
         relu_stage[1] <= relu_stage[0];
       end

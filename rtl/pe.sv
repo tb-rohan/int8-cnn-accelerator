@@ -1,5 +1,6 @@
 `timescale 1ns/1ps
 
+(* use_dsp = "yes" *)
 module pe #(parameter int DATA_W = 8, parameter int ACC_W = 32) (
   input logic clk,
   input logic rst_n,
